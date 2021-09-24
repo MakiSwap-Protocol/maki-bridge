@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useCallback, useState } from 'react'
-import { CardBody, ArrowDownIcon, Button, IconButton, Text } from 'maki-toolkit'
+import { CardBody, ArrowDownIcon, Button, IconButton, Image } from 'maki-toolkit'
 import ExchangePage from 'components/Layout/ExchangePage'
 import AppBody from 'components/AppBody'
 import { ArrowWrapper, BottomGrouping, SwapCallbackError, Wrapper } from 'components/Swap/styleds'
@@ -219,6 +219,7 @@ const Bridge: FunctionComponent = () => {
           </CardBody>
         </Wrapper>
       </AppBody>
+      <Image src="/bridge-logo.png" height={91} width={517} mt={16} />
       <BridgeDetails bridgeInfo={bridgeInfo} />
       <ConfirmBridgeModal isOpen={confirmModalOpen} onDismiss={() => setConfirmModalOpen(false)} />
     </ExchangePage>
