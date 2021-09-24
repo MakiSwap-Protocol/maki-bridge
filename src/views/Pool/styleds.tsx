@@ -1,4 +1,4 @@
-import { Text } from 'maki-uikit-v2'
+import { Text } from 'maki-toolkit'
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`

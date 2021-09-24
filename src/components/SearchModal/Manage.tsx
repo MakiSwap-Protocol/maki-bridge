@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Token } from 'maki-sdk'
-import { ButtonMenu, ButtonMenuItem, ModalBody } from 'maki-uikit-v2'
+import { ButtonMenu, ButtonMenuItem, ModalBody } from 'maki-toolkit'
 import styled from 'styled-components'
 import { TokenList } from '@uniswap/token-lists'
 import { useTranslation } from 'contexts/Localization'

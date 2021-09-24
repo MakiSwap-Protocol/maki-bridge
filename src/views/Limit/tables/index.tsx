@@ -1,22 +1,22 @@
 /* eslint-disable import/order */
 import React, { useCallback, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { SwitchTransition, CSSTransition } from "react-transition-group";
+import { useDispatch, useSelector } from 'react-redux'
+import { SwitchTransition, CSSTransition } from 'react-transition-group'
 import { useLocation } from 'react-router-dom'
-import styled from 'styled-components';
-import { Button } from 'maki-uikit-v2'
+import styled from 'styled-components'
+import { Button } from 'maki-toolkit'
 import { darken } from 'polished'
 
 import { DisableCard } from 'components/Card'
 import TableNav from './tableNav'
 import { Table, TableData } from './table'
-import "./styles.css"
-import { AppState } from 'state';
-import { EOrderStatus, EOrderType, EOrderState } from 'state/limit/enums';
-import { shortenAddress } from 'utils';
-import CancelOrderModal from '../dialogs';
-import { limitSelectOrder } from 'state/limit/actions';
-import { useWeb3React } from '@web3-react/core';
+import './styles.css'
+import { AppState } from 'state'
+import { EOrderStatus, EOrderType, EOrderState } from 'state/limit/enums'
+import { shortenAddress } from 'utils'
+import CancelOrderModal from '../dialogs'
+import { limitSelectOrder } from 'state/limit/actions'
+import { useWeb3React } from '@web3-react/core'
 
 const activeClassName = 'ACTIVE'
 
@@ -36,7 +36,7 @@ const CancelButton = styled(Button)`
 `
 
 interface TableLimitOrderProp {
-  modalAction?: () => void;
+  modalAction?: () => void
 }
 
 export default function ({ modalAction }: TableLimitOrderProp) {
@@ -48,38 +48,46 @@ export default function ({ modalAction }: TableLimitOrderProp) {
   const activeIndex = params.get('table') === 'closed-orders' ? 2 : params.get('table') === 'completed-orders' ? 1 : 0
   const { status, orders, error } = useSelector<AppState, AppState['limit']>((s) => s.limit)
   const getData = useCallback((): TableData[] => {
-    return orders ?
-      orders
-        .filter(order => {
-          return order.trader.toLowerCase() === account.toLowerCase() && (activeIndex === 0 ? (order.state === EOrderState.CREATED) :
-            activeIndex === 1 ? (order.state === EOrderState.FINISHED) :
-            order.state === EOrderState.CANCELLED)
-        })
-        .map((order) => {
-          return {
-            id: order.id,
-            type: EOrderType[order.type === EOrderType.BUY ? order.type : EOrderType.SELL],
-            pair: `${order.tokenOut.symbol} / ${order.tokenIn.symbol}`,
-            ramount: order.tokenOutAmount.toFixed(8),
-            price: order.price.toFixed(8),
-            pamount: order.tokenInAmount.toFixed(8),
-            // transaction: shortenAddress(order.trader),
-            // eslint-disable-next-line eqeqeq
-            actions: order.status.toString() != EOrderStatus.PROCESSING.toString() && order.state != EOrderState.CANCELLED && order.state != EOrderState.FINISHED
-              ? 'Cancel Order' : ' - '
-          } as TableData
-        }) : []
+    return orders
+      ? orders
+          .filter((order) => {
+            return (
+              order.trader.toLowerCase() === account.toLowerCase() &&
+              (activeIndex === 0
+                ? order.state === EOrderState.CREATED
+                : activeIndex === 1
+                ? order.state === EOrderState.FINISHED
+                : order.state === EOrderState.CANCELLED)
+            )
+          })
+          .map((order) => {
+            return {
+              id: order.id,
+              type: EOrderType[order.type === EOrderType.BUY ? order.type : EOrderType.SELL],
+              pair: `${order.tokenOut.symbol} / ${order.tokenIn.symbol}`,
+              ramount: order.tokenOutAmount.toFixed(8),
+              price: order.price.toFixed(8),
+              pamount: order.tokenInAmount.toFixed(8),
+              // transaction: shortenAddress(order.trader),
+              // eslint-disable-next-line eqeqeq
+              actions:
+                order.status.toString() !== EOrderStatus.PROCESSING.toString() &&
+                order.state !== EOrderState.CANCELLED &&
+                order.state !== EOrderState.FINISHED
+                  ? 'Cancel Order'
+                  : ' - ',
+            } as TableData
+          })
+      : []
   }, [orders, activeIndex, account])
   return (
     <DisableCard marginTop="24px">
-      <TableNav
-        activeIndex={activeIndex}
-      />
+      <TableNav activeIndex={activeIndex} />
       <SwitchTransition mode="out-in">
         <CSSTransition
-          key={activeIndex > 1 ? "closed-orders" : activeIndex === 1 ? "completed-orders" : "my-orders"}
+          key={activeIndex > 1 ? 'closed-orders' : activeIndex === 1 ? 'completed-orders' : 'my-orders'}
           in={activeIndex}
-          addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
+          addEndListener={(node, done) => node.addEventListener('transitionend', done, false)}
           classNames="fade"
         >
           <Table
@@ -87,35 +95,32 @@ export default function ({ modalAction }: TableLimitOrderProp) {
             columns={[
               {
                 Header: 'Type',
-                accessor: 'type'
+                accessor: 'type',
               },
               {
                 Header: 'Pair',
-                accessor: 'pair'
+                accessor: 'pair',
               },
               {
                 Header: 'Receive Amount',
                 accessor: 'ramount',
                 Cell: ({ value, row }) => {
                   const orderId = row.original.id
-                  const bOrder = orders.find(item => item.id === orderId)
+                  const bOrder = orders.find((item) => item.id === orderId)
                   return (
                     <p>
                       {value}
-                      {bOrder && (
-                        <span style={{ marginLeft: 5 }}>
-                          {bOrder?.tokenOut?.symbol}
-                        </span>
-                      )}
+                      {bOrder && <span style={{ marginLeft: 5 }}>{bOrder?.tokenOut?.symbol}</span>}
                     </p>
                   )
-                }
-              }, {
+                },
+              },
+              {
                 Header: 'Price',
                 accessor: 'price',
                 Cell: ({ value, row }) => {
                   const orderId = row.original.id
-                  const bOrder = orders.find(item => item.id === orderId)
+                  const bOrder = orders.find((item) => item.id === orderId)
                   return (
                     <p>
                       {value}
@@ -126,24 +131,21 @@ export default function ({ modalAction }: TableLimitOrderProp) {
                       )} */}
                     </p>
                   )
-                }
-              }, {
+                },
+              },
+              {
                 Header: 'Pay Amount',
                 accessor: 'pamount',
                 Cell: ({ value, row }) => {
                   const orderId = row.original.id
-                  const bOrder = orders.find(item => item.id === orderId)
+                  const bOrder = orders.find((item) => item.id === orderId)
                   return (
                     <p>
                       {value}
-                      {bOrder && (
-                        <span style={{ marginLeft: 5 }}>
-                          {bOrder?.tokenIn?.symbol}
-                        </span>
-                      )}
+                      {bOrder && <span style={{ marginLeft: 5 }}>{bOrder?.tokenIn?.symbol}</span>}
                     </p>
                   )
-                }
+                },
               },
               // {
               //   Header: 'Transaction',
@@ -156,26 +158,24 @@ export default function ({ modalAction }: TableLimitOrderProp) {
                   const { original } = row
                   return (
                     <>
-                    {
-                      value === ' - ' ?
-                      <div style={{ cursor: 'pointer' }}>{value}</div>
-                      :
-                      <CancelButton
-                        onClick={
-                          ($e) => {
+                      {value === ' - ' ? (
+                        <div style={{ cursor: 'pointer' }}>{value}</div>
+                      ) : (
+                        <CancelButton
+                          onClick={($e) => {
                             $e.preventDefault()
                             if (original) {
                               dispatch(limitSelectOrder(original?.id))
                             }
                             modalAction?.()
-                          }
-                        }>
-                        {value}
-                      </CancelButton>
-                    }
+                          }}
+                        >
+                          {value}
+                        </CancelButton>
+                      )}
                     </>
                   )
-                }
+                },
               },
             ]}
             data={getData()}

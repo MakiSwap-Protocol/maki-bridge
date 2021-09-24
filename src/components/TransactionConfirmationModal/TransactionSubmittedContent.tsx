@@ -1,7 +1,7 @@
 import { ChainId } from 'maki-sdk'
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
-import { Button, LinkExternal } from 'maki-uikit-v2'
+import { Button, LinkExternal } from 'maki-toolkit'
 import { ArrowUpCircle } from 'react-feather'
 import { getEtherscanLink } from 'utils'
 import { AutoColumn } from 'components/Column'

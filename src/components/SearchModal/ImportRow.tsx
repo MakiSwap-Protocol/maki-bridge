@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react'
 import { Token } from 'maki-sdk'
-import { Button, Text, CheckmarkCircleIcon } from 'maki-uikit-v2'
+import { Button, Text, CheckmarkCircleIcon } from 'maki-toolkit'
 import { AutoRow, RowFixed } from 'components/Layout/Row'
 import { AutoColumn } from 'components/Layout/Column'
 import CurrencyLogo from 'components/CurrencyLogo'

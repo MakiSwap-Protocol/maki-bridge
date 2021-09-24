@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { Flex, Skeleton, Text } from 'maki-uikit-v2'
+import { Flex, Skeleton, Text } from 'maki-toolkit'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 import BigNumber from 'bignumber.js'

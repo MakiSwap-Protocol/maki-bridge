@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text } from 'maki-uikit-v2'
+import { Text } from 'maki-toolkit'
 import { Spinner } from 'components/Shared'
 import { AutoColumn } from 'components/Column'
 import { Wrapper, Section, ConfirmedIcon, ContentHeader } from './helpers'

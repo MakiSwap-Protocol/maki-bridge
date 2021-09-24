@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ChevronDownIcon, ChevronUpIcon, Text } from 'maki-uikit-v2'
+import { ChevronDownIcon, ChevronUpIcon, Text } from 'maki-toolkit'
 
 export interface ExpandableSectionButtonProps {
   onClick?: () => void

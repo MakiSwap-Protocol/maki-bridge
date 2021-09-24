@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Route, useRouteMatch, useLocation } from 'react-router-dom'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
-import { Flex, Image, Heading, RowType, Toggle, Text, useMatchBreakpoints } from 'maki-uikit-v2'
+import { Flex, Image, Heading, RowType, Toggle, Text, useMatchBreakpoints } from 'maki-toolkit'
 import FlexLayout from 'components/Layout/Flex'
 import Page from 'components/Layout/Page'
 import { useFarms, usePollFarmsData, usePriceMakiHusd } from 'state/hooks'
@@ -93,7 +93,7 @@ const ViewControls = styled.div`
 `
 // eslint-disable-next-line
 const StyledHeading = styled(Heading)`
-  color: #5F6471;
+  color: #5f6471;
 `
 
 const NUMBER_OF_FARMS_VISIBLE = 42
@@ -342,9 +342,9 @@ const Farms: React.FC = () => {
   return (
     <>
       <PageHeader background="url(/images/banner-bg.png) no-repeat">
-        <Flex justifyContent="space-between" flexDirection={ isXl ? 'row' : 'column'}>
+        <Flex justifyContent="space-between" flexDirection={isXl ? 'row' : 'column'}>
           <div>
-            <Heading as="h1" scale="xxl" color="secondary" mb={ isXl ? '24px' : '10px'}>
+            <Heading as="h1" scale="xxl" color="secondary" mb={isXl ? '24px' : '10px'}>
               {t('Farms')}
             </Heading>
             <StyledHeading scale="md" color="text">

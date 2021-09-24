@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useMemo } from 'react'
-import { Card, CardBody, Text } from 'maki-uikit-v2'
+import { Card, CardBody, Text } from 'maki-toolkit'
 import { RowBetween, RowFixed } from 'components/Row'
 import QuestionHelper from 'components/QuestionHelper'
 import { useBridgeState } from 'state/bridge/hooks'

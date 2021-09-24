@@ -1,4 +1,4 @@
-import { Language } from 'maki-uikit-v2' // FIX ** TODO: REMOVE; HERE FOR NOW (A LOT OF CODE)
+import { Language } from 'maki-toolkit' // FIX ** TODO: REMOVE; HERE FOR NOW (A LOT OF CODE)
 
 export const AR: Language = { locale: 'ar-SA', language: 'العربية', code: 'ar' }
 export const BN: Language = { locale: 'bn-BD', language: 'বাংলা', code: 'bn' }

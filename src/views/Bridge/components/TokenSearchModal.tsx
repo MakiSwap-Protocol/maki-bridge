@@ -12,7 +12,7 @@ import {
   Button,
   Input,
   Box,
-} from 'maki-uikit-v2'
+} from 'maki-toolkit'
 import styled from 'styled-components'
 import usePrevious from 'hooks/usePreviousValue'
 import { useTranslation } from 'contexts/Localization'

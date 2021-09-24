@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Heading, Card, CardBody, Text } from 'maki-uikit-v2'
+import { Heading, Card, CardBody, Text } from 'maki-toolkit'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useTotalSupply, useBurnedBalance } from 'hooks/useTokenBalance'
 import { getMakiAddress } from 'utils/addressHelpers'
@@ -27,8 +27,8 @@ const MakiStats = () => {
 
   const makiSupply = totalSupply ? getBalanceNumber(totalSupply) - getBalanceNumber(burnedBalance) : 0
   const makiSupplyFormated = makiSupply
-  ? `${Number(makiSupply).toLocaleString(undefined, { maximumFractionDigits: 2 })}`
-  : '-'
+    ? `${Number(makiSupply).toLocaleString(undefined, { maximumFractionDigits: 2 })}`
+    : '-'
 
   return (
     <StyledFarmStakingCard>

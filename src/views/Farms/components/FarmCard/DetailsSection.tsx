@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text, Flex, LinkExternal, Skeleton } from 'maki-uikit-v2'
+import { Text, Flex, LinkExternal, Skeleton } from 'maki-toolkit'
 
 export interface ExpandableSectionProps {
   hecoscanAddress?: string
@@ -33,9 +33,7 @@ const DetailsSection: React.FC<ExpandableSectionProps> = ({
         <Text>Total Liquidity:</Text>
         {totalValueFormatted ? <Text>{totalValueFormatted}</Text> : <Skeleton width={75} height={25} />}
       </Flex>
-      {!removed && (
-        <StyledLinkExternal href={addLiquidityUrl}>{`Get ${lpLabel}%`}</StyledLinkExternal>
-      )}
+      {!removed && <StyledLinkExternal href={addLiquidityUrl}>{`Get ${lpLabel}%`}</StyledLinkExternal>}
       <StyledLinkExternal href={hecoscanAddress}>View Contract</StyledLinkExternal>
       <StyledLinkExternal href={infoAddress}>See Pair Info</StyledLinkExternal>
     </Wrapper>

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Card, CardHeader, CardBody, Flex, Heading, Text, useMatchBreakpoints } from 'maki-uikit-v2'
+import { Card, CardHeader, CardBody, Flex, Heading, Text, useMatchBreakpoints } from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 import PageHeader from 'components/PageHeader'
 
@@ -10,7 +10,7 @@ interface ComingSoonProps {
 
 // eslint-disable-next-line
 const StyledHeading = styled(Heading)`
-  color: #5F6471;
+  color: #5f6471;
   font-size: 18px;
   font-weight: 500;
 `
@@ -31,9 +31,9 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ children }) => {
   return (
     <>
       <PageHeader background="url(/images/banner-bg.png) no-repeat">
-        <Flex justifyContent="space-between" flexDirection={ isXl ? 'row' : 'column'}>
+        <Flex justifyContent="space-between" flexDirection={isXl ? 'row' : 'column'}>
           <div>
-            <Heading as="h2" scale="xl" color="secondary" mb={ isXl ? '24px' : '10px'}>
+            <Heading as="h2" scale="xl" color="secondary" mb={isXl ? '24px' : '10px'}>
               {t('IFO: Initial Farm Offerings')}
             </Heading>
             <StyledHeading scale="md" color="text">

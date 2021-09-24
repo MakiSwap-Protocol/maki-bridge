@@ -12,7 +12,7 @@ import {
   Text,
   TimerIcon,
   useTooltip,
-} from 'maki-uikit-v2'
+} from 'maki-toolkit'
 import { BASE_URL } from 'config'
 import { getHecoInfoBlockCountdownUrl } from 'utils/hecoinfo'
 import { useBlock, useMakiVault } from 'state/hooks'

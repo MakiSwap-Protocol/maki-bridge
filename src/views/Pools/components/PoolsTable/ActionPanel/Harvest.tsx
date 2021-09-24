@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Text, useModal, Flex, TooltipText, useTooltip, Skeleton } from 'maki-uikit-v2'
+import { Button, Text, useModal, Flex, TooltipText, useTooltip, Skeleton } from 'maki-toolkit'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
 import { getMakiVaultEarnings } from 'views/Pools/helpers'

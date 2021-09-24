@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, TooltipText, IconButton, useModal, CalculateIcon, Skeleton, useTooltip } from 'maki-uikit-v2'
+import { Flex, TooltipText, IconButton, useModal, CalculateIcon, Skeleton, useTooltip } from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 import Balance from 'components/Balance'
 import ApyCalculatorModal from 'components/ApyCalculatorModal'

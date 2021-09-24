@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useCallback, useState } from 'react'
-import { CardBody, ArrowDownIcon, Button, IconButton, Text } from 'maki-uikit-v2'
+import { CardBody, ArrowDownIcon, Button, IconButton, Text } from 'maki-toolkit'
 import ExchangePage from 'components/Layout/ExchangePage'
 import AppBody from 'components/AppBody'
 import { ArrowWrapper, BottomGrouping, SwapCallbackError, Wrapper } from 'components/Swap/styleds'

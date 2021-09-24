@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text, Button, Input, InputProps, Flex, Link } from 'maki-uikit-v2'
+import { Text, Button, Input, InputProps, Flex, Link } from 'maki-toolkit'
 
 interface ModalInputProps {
   max: string
@@ -73,9 +73,7 @@ const ModalInput: React.FC<ModalInputProps> = ({
       <StyledTokenInput isWarning={isBalanceZero}>
         <Flex justifyContent="space-between" pl="16px">
           <Text fontSize="14px">{inputTitle}</Text>
-          <Text fontSize="14px">
-            Balance: {displayBalance.toLocaleString()}
-          </Text>
+          <Text fontSize="14px">Balance: {displayBalance.toLocaleString()}</Text>
         </Flex>
         <Flex alignItems="flex-end" justifyContent="space-around">
           <StyledInput onChange={onChange} placeholder="0" value={value} />

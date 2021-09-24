@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, AutoRenewIcon, Skeleton } from 'maki-uikit-v2'
+import { Button, AutoRenewIcon, Skeleton } from 'maki-toolkit'
 import { useSousApprove } from 'hooks/useApprove'
 import { useTranslation } from 'contexts/Localization'
 import { useHRC20 } from 'hooks/useContract'

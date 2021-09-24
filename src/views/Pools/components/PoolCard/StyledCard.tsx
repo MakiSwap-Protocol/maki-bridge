@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components'
-import { Card, Box } from 'maki-uikit-v2'
+import { Card, Box } from 'maki-toolkit'
 
 const PromotedGradient = keyframes`
   0% {

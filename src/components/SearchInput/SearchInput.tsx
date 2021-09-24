@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react'
-import { Input } from 'maki-uikit-v2'
+import { Input } from 'maki-toolkit'
 import styled from 'styled-components'
 import debounce from 'lodash/debounce'
 

@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
-import { Button, Text } from 'maki-uikit-v2'
+import { Button, Text } from 'maki-toolkit'
 import { AlertTriangle } from 'react-feather'
 import { TYPE } from 'components/Shared'
 import Modal from 'components/Modal'

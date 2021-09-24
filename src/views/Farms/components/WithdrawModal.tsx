@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useMemo, useState } from 'react'
-import { Button, Modal } from 'maki-uikit-v2'
+import { Button, Modal } from 'maki-toolkit'
 import ModalActions from 'components/ModalActions'
 import ModalInput from 'components/ModalInput'
 import { getFullDisplayBalance } from 'utils/formatBalance'
@@ -36,17 +36,17 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({ onConfirm, onDismiss, max
   }, [fullBalance, setVal])
 
   return (
-    <Modal title='Unstake LP tokens' onDismiss={onDismiss}>
+    <Modal title="Unstake LP tokens" onDismiss={onDismiss}>
       <ModalInput
         onSelectMax={handleSelectMax}
         onChange={handleChange}
         value={val}
         max={fullBalance}
         symbol={tokenName}
-        inputTitle='Unstake'
+        inputTitle="Unstake"
       />
       <ModalActions>
-        <Button variant="secondary" onClick={onDismiss} width='100%' disabled={pendingTx}>
+        <Button variant="secondary" onClick={onDismiss} width="100%" disabled={pendingTx}>
           Cancel
         </Button>
         <Button
@@ -57,7 +57,7 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({ onConfirm, onDismiss, max
             setPendingTx(false)
             onDismiss()
           }}
-          width='100%'
+          width="100%"
         >
           {pendingTx ? 'Pending Confirmation' : 'Confirm'}
         </Button>

@@ -1,6 +1,6 @@
 import React, { CSSProperties, MutableRefObject, useCallback, useMemo } from 'react'
 import { Currency, CurrencyAmount, currencyEquals, HUOBI, Token } from 'maki-sdk'
-import { Text } from 'maki-uikit-v2'
+import { Text } from 'maki-toolkit'
 import styled from 'styled-components'
 import { FixedSizeList } from 'react-window'
 import { wrappedCurrency } from 'utils/wrappedCurrency'
@@ -177,16 +177,7 @@ export default function CurrencyList({
         />
       )
     },
-    [
-      chainId,
-      onCurrencySelect,
-      otherCurrency,
-      selectedCurrency,
-      setImportToken,
-      showImportView,
-      breakIndex,
-      t,
-    ],
+    [chainId, onCurrencySelect, otherCurrency, selectedCurrency, setImportToken, showImportView, breakIndex, t],
   )
 
   const itemKey = useCallback((index: number, data: any) => currencyKey(data[index]), [])

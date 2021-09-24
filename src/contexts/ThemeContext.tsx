@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ThemeProvider as SCThemeProvider } from 'styled-components'
-import { light, dark } from 'maki-uikit-v2'
+import { light, dark } from 'maki-toolkit'
 
 const CACHE_KEY = 'IS_DARK'
 

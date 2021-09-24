@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Card, CardBody, Heading, Skeleton, Text } from 'maki-uikit-v2'
+import { Card, CardBody, Heading, Skeleton, Text } from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 import { useTVL } from 'hooks/api' // disabled: useGetStats
 // import BigNumber from 'bignumber.js'
@@ -19,13 +19,13 @@ const TotalValueLockedCard = () => {
   // const tvl = data ? data.tvl.toLocaleString('en-US', { maximumFractionDigits: 0 }) : null
   // const tvl = data ? data.total_value_locked_all.toLocaleString('en-US', { maximumFractionDigits: 0 }) : null
 
-/* ACQUIRE PRICES */
+  /* ACQUIRE PRICES */
   // const makiPrice = new BigNumber(usePriceMakiHusd())
   // const htPrice = makiPrice// new BigNumber(usePriceHtHusd())
   // const ethPrice = makiPrice // new BigNumber(usePriceEthHusd())
   // const btcPrice = makiPrice // new BigNumber(usePriceBtcHusd())
-  
-/* VALUE BY PID */
+
+  /* VALUE BY PID */
   // const F0 = new BigNumber(1500000)
   // const F1 = new BigNumber(useFarmFromPid(1).quoteTokenAmountTotal).times(htPrice)
   // const F2 = new BigNumber(useFarmFromPid(2).quoteTokenAmountTotal).times(htPrice)
@@ -44,11 +44,9 @@ const TotalValueLockedCard = () => {
   // const BTCVAL = F6
   // const USDVAL = F8
 
-/* SUM VALUE LOCKED */
-  const ttlVal = tvl.toLocaleString().slice(0,11)
-  const totalValueFormated = ttlVal
-  ? `${Number(ttlVal).toLocaleString(undefined, { maximumFractionDigits: 0 })}`
-  : '-'
+  /* SUM VALUE LOCKED */
+  const ttlVal = tvl.toLocaleString().slice(0, 11)
+  const totalValueFormated = ttlVal ? `${Number(ttlVal).toLocaleString(undefined, { maximumFractionDigits: 0 })}` : '-'
 
   return (
     <StyledTotalValueLockedCard>

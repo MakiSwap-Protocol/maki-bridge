@@ -13,7 +13,7 @@ import {
   Skeleton,
   useTooltip,
   Button,
-} from 'maki-uikit-v2'
+} from 'maki-toolkit'
 import { BASE_HECO_INFO_URL, BASE_URL } from 'config'
 import { useBlock, useMakiVault } from 'state/hooks'
 import { Pool } from 'state/types'

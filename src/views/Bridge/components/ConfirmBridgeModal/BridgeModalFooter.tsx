@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { AutoRow } from 'components/Row'
 import { AutoColumn } from 'components/Column'
-import { Button } from 'maki-uikit-v2'
+import { Button } from 'maki-toolkit'
 import BridgeSummary from '../BridgeSummary'
 
 interface Props {

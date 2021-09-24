@@ -7,7 +7,7 @@ import React, {
   useEffect,
   useState,
 } from 'react'
-import { Text } from 'maki-uikit-v2'
+import { Text } from 'maki-toolkit'
 import styled from 'styled-components'
 import { FixedSizeList } from 'react-window'
 import Column from 'components/Layout/Column'

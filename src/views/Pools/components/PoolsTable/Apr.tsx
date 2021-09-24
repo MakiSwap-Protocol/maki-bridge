@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, useModal, CalculateIcon, IconButton, Skeleton, FlexProps } from 'maki-uikit-v2'
+import { Flex, useModal, CalculateIcon, IconButton, Skeleton, FlexProps } from 'maki-toolkit'
 import { BASE_EXCHANGE_URL } from 'config'
 import ApyCalculatorModal from 'components/ApyCalculatorModal'
 import Balance from 'components/Balance'

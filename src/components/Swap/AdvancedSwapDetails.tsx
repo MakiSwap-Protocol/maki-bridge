@@ -1,6 +1,6 @@
 import React from 'react'
 import { Trade, TradeType } from 'maki-sdk'
-import { Card, CardBody, Text } from 'maki-uikit-v2'
+import { Card, CardBody, Text } from 'maki-toolkit'
 import { Field } from 'state/swap/actions'
 import { useUserSlippageTolerance } from 'state/user/hooks'
 import { computeSlippageAdjustedAmounts, computeTradePriceBreakdown } from 'utils/prices'

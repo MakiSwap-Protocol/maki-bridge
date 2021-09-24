@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
-import { Text } from 'maki-uikit-v2'
+import { Text } from 'maki-toolkit'
 import { ArrowDown } from 'react-feather'
 import { TYPE } from 'components/Shared'
 import Column, { AutoColumn } from 'components/Column'

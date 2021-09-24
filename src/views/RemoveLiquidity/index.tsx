@@ -4,7 +4,7 @@ import { splitSignature } from '@ethersproject/bytes'
 import { Contract } from '@ethersproject/contracts'
 import { TransactionResponse } from '@ethersproject/providers'
 import { Currency, currencyEquals, HUOBI, Percent, WHT } from 'maki-sdk'
-import { Button, Flex, Text } from 'maki-uikit-v2'
+import { Button, Flex, Text } from 'maki-toolkit'
 import { ArrowDown, Plus } from 'react-feather'
 import { RouteComponentProps } from 'react-router'
 
@@ -62,11 +62,10 @@ export default function RemoveLiquidity({
 }: RouteComponentProps<{ currencyIdA: string; currencyIdB: string }>) {
   const [currencyA, currencyB] = [useCurrency(currencyIdA) ?? undefined, useCurrency(currencyIdB) ?? undefined]
   const { account, chainId, library } = useActiveWeb3React()
-  const [tokenA, tokenB] = useMemo(() => [wrappedCurrency(currencyA, chainId), wrappedCurrency(currencyB, chainId)], [
-    currencyA,
-    currencyB,
-    chainId,
-  ])
+  const [tokenA, tokenB] = useMemo(
+    () => [wrappedCurrency(currencyA, chainId), wrappedCurrency(currencyB, chainId)],
+    [currencyA, currencyB, chainId],
+  )
 
   const theme = useContext(ThemeContext)
 
@@ -178,7 +177,7 @@ export default function RemoveLiquidity({
       setSignatureData(null)
       return _onUserInput(field, val)
     },
-    [_onUserInput]
+    [_onUserInput],
   )
 
   const onLiquidityInput = useCallback((val: string): void => onUserInput(Field.LIQUIDITY, val), [onUserInput])
@@ -285,12 +284,12 @@ export default function RemoveLiquidity({
           .catch((e) => {
             console.error(`estimateGas failed`, index, methodName, args, e)
             return undefined
-          })
-      )
+          }),
+      ),
     )
 
     const indexOfSuccessfulEstimation = safeGasEstimates.findIndex((safeGasEstimate) =>
-      BigNumber.isBigNumber(safeGasEstimate)
+      BigNumber.isBigNumber(safeGasEstimate),
     )
 
     // all estimations failed...
@@ -398,14 +397,14 @@ export default function RemoveLiquidity({
     (value: number) => {
       onUserInput(Field.LIQUIDITY_PERCENT, value.toString())
     },
-    [onUserInput]
+    [onUserInput],
   )
 
   const oneCurrencyIsHT = currencyA === HUOBI || currencyB === HUOBI
   const oneCurrencyIsWHT = Boolean(
     chainId &&
       ((currencyA && currencyEquals(WHT[chainId], currencyA)) ||
-        (currencyB && currencyEquals(WHT[chainId], currencyB)))
+        (currencyB && currencyEquals(WHT[chainId], currencyB))),
   )
 
   const handleSelectCurrencyA = useCallback(
@@ -416,7 +415,7 @@ export default function RemoveLiquidity({
         history.push(`/remove/${currencyId(currency)}/${currencyIdB}`)
       }
     },
-    [currencyIdA, currencyIdB, history]
+    [currencyIdA, currencyIdB, history],
   )
   const handleSelectCurrencyB = useCallback(
     (currency: Currency) => {
@@ -426,7 +425,7 @@ export default function RemoveLiquidity({
         history.push(`/remove/${currencyIdA}/${currencyId(currency)}`)
       }
     },
-    [currencyIdA, currencyIdB, history]
+    [currencyIdA, currencyIdB, history],
   )
 
   const handleDismissConfirmation = useCallback(() => {
@@ -441,7 +440,7 @@ export default function RemoveLiquidity({
 
   const [innerLiquidityPercentage, setInnerLiquidityPercentage] = useDebouncedChangeHandler(
     Number.parseInt(parsedAmounts[Field.LIQUIDITY_PERCENT].toFixed(0)),
-    liquidityPercentChangeCallback
+    liquidityPercentChangeCallback,
   )
 
   return (

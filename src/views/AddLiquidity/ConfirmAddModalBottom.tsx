@@ -1,6 +1,6 @@
 import { Currency, CurrencyAmount, Fraction, Percent } from 'maki-sdk'
 import React from 'react'
-import { Button, Text } from 'maki-uikit-v2'
+import { Button, Text } from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 import { TranslateString } from 'utils/translateTextHelpers'
 import { Field } from 'state/mint/actions'

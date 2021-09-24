@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Text, TooltipText, useTooltip } from 'maki-uikit-v2'
+import { Flex, Text, TooltipText, useTooltip } from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 import { useWeb3React } from '@web3-react/core'
 import useWithdrawalFeeTimer from 'hooks/makiVault/useWithdrawalFeeTimer'

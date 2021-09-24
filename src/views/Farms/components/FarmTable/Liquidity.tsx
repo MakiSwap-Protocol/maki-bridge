@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { HelpIcon, Text, Skeleton, useTooltip } from 'maki-uikit-v2'
+import { HelpIcon, Text, Skeleton, useTooltip } from 'maki-toolkit'
 import BigNumber from 'bignumber.js'
 
 const ReferenceElement = styled.div`
@@ -35,10 +35,10 @@ const Liquidity: React.FunctionComponent<LiquidityProps> = ({ liquidity }) => {
     ) : (
       <Skeleton width={60} />
     )
-  const { targetRef, tooltip, tooltipVisible } = useTooltip(
-    'Total value of the funds in this farm’s liquidity pool',
-    { placement: 'top-end', tooltipOffset: [20, 10] },
-  )
+  const { targetRef, tooltip, tooltipVisible } = useTooltip('Total value of the funds in this farm’s liquidity pool', {
+    placement: 'top-end',
+    tooltipOffset: [20, 10],
+  })
 
   return (
     <Container>

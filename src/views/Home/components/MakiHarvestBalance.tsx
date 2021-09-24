@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text } from 'maki-uikit-v2'
+import { Text } from 'maki-toolkit'
 import { useWeb3React } from '@web3-react/core'
 import BigNumber from 'bignumber.js'
 import { useTranslation } from 'contexts/Localization'

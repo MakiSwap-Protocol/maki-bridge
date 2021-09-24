@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
-import { Button, Text } from 'maki-uikit-v2'
+import { Button, Text } from 'maki-toolkit'
 import { AlertTriangle } from 'react-feather'
 import { AutoColumn } from 'components/Column'
 import { Wrapper, Section, BottomSection, ContentHeader } from './helpers'

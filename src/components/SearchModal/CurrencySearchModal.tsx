@@ -10,7 +10,7 @@ import {
   InjectedModalProps,
   Heading,
   Button,
-} from 'maki-uikit-v2'
+} from 'maki-toolkit'
 import styled from 'styled-components'
 import usePrevious from 'hooks/usePreviousValue'
 import { TokenList } from '@uniswap/token-lists'

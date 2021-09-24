@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Box } from 'maki-uikit-v2'
+import { Box } from 'maki-toolkit'
 
 const Row = styled(Box)<{
   width?: string

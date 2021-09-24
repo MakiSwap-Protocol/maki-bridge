@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, useModal } from 'maki-uikit-v2'
+import { Button, useModal } from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 import ClaimModal from 'components/ClaimModal'
 

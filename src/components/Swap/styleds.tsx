@@ -1,7 +1,7 @@
 import { transparentize } from 'polished'
 import React from 'react'
 import { AlertTriangle } from 'react-feather'
-import { Text } from 'maki-uikit-v2'
+import { Text } from 'maki-toolkit'
 import styled, { css } from 'styled-components'
 import { AutoColumn } from 'components/Column'
 

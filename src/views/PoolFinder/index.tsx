@@ -1,7 +1,7 @@
 import { Currency, HUOBI, JSBI, TokenAmount } from 'maki-sdk'
 import React, { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Button, ChevronDownIcon, AddIcon, CardBody, Text } from 'maki-uikit-v2'
+import { Button, ChevronDownIcon, AddIcon, CardBody, Text } from 'maki-toolkit'
 import CardNav from 'components/CardNav'
 import { LightCard } from 'components/Card'
 import { AutoColumn, ColumnCenter } from 'components/Column'
@@ -21,7 +21,7 @@ import { Dots } from '../Pool/styleds'
 
 enum Fields {
   TOKEN0 = 0,
-  TOKEN1 = 1
+  TOKEN1 = 1,
 }
 
 export default function PoolFinder() {
@@ -47,7 +47,7 @@ export default function PoolFinder() {
       pairState === PairState.EXISTS &&
         pair &&
         JSBI.equal(pair.reserve0.raw, JSBI.BigInt(0)) &&
-        JSBI.equal(pair.reserve1.raw, JSBI.BigInt(0))
+        JSBI.equal(pair.reserve1.raw, JSBI.BigInt(0)),
     )
 
   const position: TokenAmount | undefined = useTokenBalance(account ?? undefined, pair?.liquidityToken)
@@ -61,7 +61,7 @@ export default function PoolFinder() {
         setCurrency1(currency)
       }
     },
-    [activeField]
+    [activeField],
   )
 
   const handleSearchDismiss = useCallback(() => {
@@ -129,8 +129,8 @@ export default function PoolFinder() {
                       <Text style={{ textAlign: 'center' }}>You don’t have liquidity in this pool yet.</Text>
                       <StyledInternalLink to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`}>
                         <Button variant="primary" size="sm">
-                              Add Liquidity
-                          </Button>
+                          Add Liquidity
+                        </Button>
                       </StyledInternalLink>
                     </AutoColumn>
                   </LightCard>
@@ -147,9 +147,7 @@ export default function PoolFinder() {
               ) : pairState === PairState.INVALID ? (
                 <LightCard padding="45px 10px">
                   <AutoColumn gap="sm" justify="center">
-                    <Text style={{ textAlign: 'center' }}>
-                      Invalid Pair
-                    </Text>
+                    <Text style={{ textAlign: 'center' }}>Invalid Pair</Text>
                   </AutoColumn>
                 </LightCard>
               ) : pairState === PairState.LOADING ? (

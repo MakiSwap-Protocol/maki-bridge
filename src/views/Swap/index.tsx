@@ -1,7 +1,7 @@
 import { CurrencyAmount, JSBI, Token, Trade } from 'maki-sdk'
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { ArrowDown } from 'react-feather'
-import { CardBody, ArrowDownIcon, Button, IconButton, Text } from 'maki-uikit-v2'
+import { CardBody, ArrowDownIcon, Button, IconButton, Text } from 'maki-toolkit'
 import styled, { ThemeContext } from 'styled-components'
 import AddressInputPanel from 'components/AddressInputPanel'
 import Card, { GreyCard } from 'components/Card'
@@ -39,7 +39,7 @@ import defaultTokenJson from 'config/constants/token/makiswap.json'
 
 const Swap = () => {
   const loadedUrlParams = useDefaultsFromURLSearch()
-  const makiData = defaultTokenJson.tokens.filter(val => val.symbol === 'MAKI')[0]
+  const makiData = defaultTokenJson.tokens.filter((val) => val.symbol === 'MAKI')[0]
 
   // token warning stuff
   const [loadedInputCurrency, loadedOutputCurrency] = [
@@ -52,7 +52,7 @@ const Swap = () => {
   const [syrupTransactionType, setSyrupTransactionType] = useState<string>('')
   const urlLoadedTokens: Token[] = useMemo(
     () => [loadedInputCurrency, loadedOutputCurrency]?.filter((c): c is Token => c instanceof Token) ?? [],
-    [loadedInputCurrency, loadedOutputCurrency]
+    [loadedInputCurrency, loadedOutputCurrency],
   )
   const handleConfirmTokenWarning = useCallback(() => {
     setDismissTokenWarning(true)
@@ -75,11 +75,11 @@ const Swap = () => {
   // swap state
   const { independentField, typedValue, recipient } = useSwapState()
   const { v2Trade, currencyBalances, parsedAmount, currencies, inputError: swapInputError } = useDerivedSwapInfo()
-  const { wrapType, execute: onWrap, inputError: wrapInputError } = useWrapCallback(
-    currencies[Field.INPUT],
-    currencies[Field.OUTPUT],
-    typedValue
-  )
+  const {
+    wrapType,
+    execute: onWrap,
+    inputError: wrapInputError,
+  } = useWrapCallback(currencies[Field.INPUT], currencies[Field.OUTPUT], typedValue)
   const showWrap: boolean = wrapType !== WrapType.NOT_APPLICABLE
   const trade = showWrap ? undefined : v2Trade
 
@@ -103,13 +103,13 @@ const Swap = () => {
     (value: string) => {
       onUserInput(Field.INPUT, value)
     },
-    [onUserInput]
+    [onUserInput],
   )
   const handleTypeOutput = useCallback(
     (value: string) => {
       onUserInput(Field.OUTPUT, value)
     },
-    [onUserInput]
+    [onUserInput],
   )
 
   // modal and loading
@@ -136,7 +136,7 @@ const Swap = () => {
 
   const route = trade?.route
   const userHasSpecifiedInputOutput = Boolean(
-    currencies[Field.INPUT] && currencies[Field.OUTPUT] && parsedAmounts[independentField]?.greaterThan(JSBI.BigInt(0))
+    currencies[Field.INPUT] && currencies[Field.OUTPUT] && parsedAmounts[independentField]?.greaterThan(JSBI.BigInt(0)),
   )
   const noRoute = !route
 
@@ -161,7 +161,7 @@ const Swap = () => {
     trade,
     allowedSlippage,
     deadline,
-    recipient
+    recipient,
   )
 
   const { priceImpactWithoutFee } = computeTradePriceBreakdown(trade)
@@ -230,7 +230,7 @@ const Swap = () => {
         setSyrupTransactionType(purchaseType)
       }
     },
-    [setIsSyrup, setSyrupTransactionType]
+    [setIsSyrup, setSyrupTransactionType],
   )
 
   const handleInputSelect = useCallback(
@@ -241,7 +241,7 @@ const Swap = () => {
         checkForSyrup(inputCurrency.symbol.toLowerCase(), 'Selling')
       }
     },
-    [onCurrencySelection, setApprovalSubmitted, checkForSyrup]
+    [onCurrencySelection, setApprovalSubmitted, checkForSyrup],
   )
 
   const handleMaxInput = useCallback(() => {
@@ -257,7 +257,7 @@ const Swap = () => {
         checkForSyrup(outputCurrency.symbol.toLowerCase(), 'Buying')
       }
     },
-    [onCurrencySelection, checkForSyrup]
+    [onCurrencySelection, checkForSyrup],
   )
 
   useEffect(() => {
@@ -306,7 +306,7 @@ const Swap = () => {
                 onCurrencySelect={handleInputSelect}
                 otherCurrency={currencies[Field.OUTPUT]}
                 id="swap-currency-input"
-                />
+              />
               <AutoColumn justify="space-between">
                 <AutoRow justify={isExpertMode ? 'space-between' : 'center'} style={{ padding: '0 1rem' }}>
                   <ArrowWrapper clickable>
@@ -364,7 +364,7 @@ const Swap = () => {
                           price={trade?.executionPrice}
                           showInverted={showInverted}
                           setShowInverted={setShowInverted}
-                          />
+                        />
                       </RowBetween>
                     )}
                     {allowedSlippage !== INITIAL_ALLOWED_SLIPPAGE && (
@@ -387,7 +387,7 @@ const Swap = () => {
                 </Button>
               ) : noRoute && userHasSpecifiedInputOutput ? (
                 <GreyCard style={{ textAlign: 'center' }}>Insufficient liquidity for this trade.</GreyCard>
-                ) : showApproveFlow ? (
+              ) : showApproveFlow ? (
                 <RowBetween>
                   <Button
                     onClick={approveCallback}
@@ -425,7 +425,7 @@ const Swap = () => {
                       !isValid || approval !== ApprovalState.APPROVED || (priceImpactSeverity > 3 && !isExpertMode)
                     }
                     variant={isValid && priceImpactSeverity > 2 ? 'danger' : 'primary'}
-                    >
+                  >
                     {priceImpactSeverity > 3 && !isExpertMode
                       ? `Price Impact High`
                       : `Swap${priceImpactSeverity > 2 ? ' Anyway' : ''}`}

@@ -1,6 +1,6 @@
 // import React, { useState, useCallback } from 'react'
 // import styled from 'styled-components'
-// import { Heading, Card, CardBody, Button, useModal } from 'maki-uikit-v2'
+// import { Heading, Card, CardBody, Button, useModal } from 'maki-toolkit'
 // import { useWeb3React } from '@web3-react/core'
 // import { getMakiAddress } from 'utils/addressHelpers'
 // import { getBalanceNumber } from 'utils/formatBalance'

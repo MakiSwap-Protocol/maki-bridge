@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
-import { Text, Image, useMatchBreakpoints } from 'maki-uikit-v2'
+import { Text, Image, useMatchBreakpoints } from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 import { useMakiVault } from 'state/hooks'
 import { Pool } from 'state/types'

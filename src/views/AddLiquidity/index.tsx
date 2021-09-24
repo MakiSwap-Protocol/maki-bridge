@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
 import { TransactionResponse } from '@ethersproject/providers'
 import { Currency, currencyEquals, HUOBI, TokenAmount, WHT } from 'maki-sdk'
-import { Button, CardBody, AddIcon, Text as UIKitText } from 'maki-uikit-v2'
+import { Button, CardBody, AddIcon, Text as UIKitText } from 'maki-toolkit'
 import { RouteComponentProps } from 'react-router-dom'
 import { LightCard } from 'components/Card'
 import { AutoColumn, ColumnCenter } from 'components/Column'
@@ -52,7 +52,7 @@ export default function AddLiquidity({
   const oneCurrencyIsWHT = Boolean(
     chainId &&
       ((currencyA && currencyEquals(currencyA, WHT[chainId])) ||
-        (currencyB && currencyEquals(currencyB, WHT[chainId])))
+        (currencyB && currencyEquals(currencyB, WHT[chainId]))),
   )
   const expertMode = useIsExpertMode()
 
@@ -98,7 +98,7 @@ export default function AddLiquidity({
         [field]: maxAmountSpend(currencyBalances[field]),
       }
     },
-    {}
+    {},
   )
 
   const atMaxAmounts: { [field in Field]?: TokenAmount } = [Field.CURRENCY_A, Field.CURRENCY_B].reduce(
@@ -108,7 +108,7 @@ export default function AddLiquidity({
         [field]: maxAmounts[field]?.equalTo(parsedAmounts[field] ?? '0'),
       }
     },
-    {}
+    {},
   )
 
   // check whether the user has approved the router on the tokens
@@ -183,7 +183,7 @@ export default function AddLiquidity({
           })
 
           setTxHash(response.hash)
-        })
+        }),
       )
       .catch((e) => {
         setAttemptingTxn(false)
@@ -262,7 +262,7 @@ export default function AddLiquidity({
         history.push(`/add/${newCurrencyIdA}/${currencyIdB}`)
       }
     },
-    [currencyIdB, history, currencyIdA]
+    [currencyIdB, history, currencyIdA],
   )
   const handleCurrencyBSelect = useCallback(
     (currB: Currency) => {
@@ -277,7 +277,7 @@ export default function AddLiquidity({
         history.push(`/add/${currencyIdA || 'HT'}/${newCurrencyIdB}`)
       }
     },
-    [currencyIdA, history, currencyIdB]
+    [currencyIdA, history, currencyIdB],
   )
 
   const handleDismissConfirmation = useCallback(() => {

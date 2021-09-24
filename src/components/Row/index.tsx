@@ -1,12 +1,19 @@
 import styled from 'styled-components'
 // import { Box } from 'rebass/styled-components'
-import { Box } from 'maki-uikit-v2'
+import { Box } from 'maki-toolkit'
 
-const Row = styled(Box)<{ align?: string; padding?: string; border?: string; borderRadius?: string; disabled?: boolean; selected?: boolean }>`
+const Row = styled(Box)<{
+  align?: string
+  padding?: string
+  border?: string
+  borderRadius?: string
+  disabled?: boolean
+  selected?: boolean
+}>`
   width: 100%;
   display: flex;
   padding: 0;
-  align-items: ${({ align }) => (align || 'center')};
+  align-items: ${({ align }) => align || 'center'};
   padding: ${({ padding }) => padding};
   border: ${({ border }) => border};
   border-radius: ${({ borderRadius }) => borderRadius};

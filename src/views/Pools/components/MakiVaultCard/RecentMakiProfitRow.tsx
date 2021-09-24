@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Text } from 'maki-uikit-v2'
+import { Flex, Text } from 'maki-toolkit'
 import { useWeb3React } from '@web3-react/core'
 import { useMakiVault, usePriceMakiHusd } from 'state/hooks'
 import { getMakiVaultEarnings } from 'views/Pools/helpers'
@@ -26,7 +26,7 @@ const RecentMakiProfitCountdownRow = () => {
 
   return (
     <Flex alignItems="center" justifyContent="space-between">
-      <Text fontSize="14px">{`${('Recent MAKI profit')}:`}</Text>
+      <Text fontSize="14px">{`${'Recent MAKI profit'}:`}</Text>
       {hasAutoEarnings && (
         <RecentMakiProfitBalance
           makiToDisplay={autoMakiToDisplay}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, Flex, useTooltip, TooltipText } from 'maki-uikit-v2'
+import { Text, Flex, useTooltip, TooltipText } from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 import { useMakiVault } from 'state/hooks'
 import UnstakingFeeCountdownRow from './UnstakingFeeCountdownRow'

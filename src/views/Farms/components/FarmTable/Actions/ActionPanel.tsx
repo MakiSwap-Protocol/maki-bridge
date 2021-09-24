@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { keyframes, css } from 'styled-components'
-import { LinkExternal, Text } from 'maki-uikit-v2'
+import { LinkExternal, Text } from 'maki-toolkit'
 import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import { getHecoInfoAddressUrl } from 'utils/hecoinfo'

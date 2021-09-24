@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Button, Flex, Input, Text } from 'maki-uikit-v2'
+import { Button, Flex, Input, Text } from 'maki-toolkit'
 import { useUserSlippageTolerance } from 'state/user/hooks'
 import QuestionHelper from 'components/QuestionHelper'
 import TranslatedText from 'components/TranslatedText'
@@ -44,7 +44,7 @@ const Label = styled.div`
 const predefinedValues = [
   { label: '0.1%', value: 0.1 },
   { label: '0.5%', value: 0.5 },
-  { label: '1%', value: 1 }
+  { label: '1%', value: 1 },
 ]
 
 const SlippageToleranceSettings = () => {

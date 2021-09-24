@@ -1,6 +1,6 @@
 import React from 'react'
 import BigNumber from 'bignumber.js'
-import { IconButton, useModal, CalculateIcon } from 'maki-uikit-v2'
+import { IconButton, useModal, CalculateIcon } from 'maki-toolkit'
 import ApyCalculatorModal from 'components/ApyCalculatorModal'
 import { useTranslation } from 'contexts/Localization'
 

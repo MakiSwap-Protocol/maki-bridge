@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Text, IconButton, AddIcon, MinusIcon, useModal, Skeleton } from 'maki-uikit-v2'
+import { Flex, Text, IconButton, AddIcon, MinusIcon, useModal, Skeleton } from 'maki-toolkit'
 import BigNumber from 'bignumber.js'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { Pool } from 'state/types'

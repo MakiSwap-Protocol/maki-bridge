@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Skeleton, Text, useTooltip, HelpIcon, Flex, Box, useModal, useMatchBreakpoints } from 'maki-uikit-v2'
+import { Skeleton, Text, useTooltip, HelpIcon, Flex, Box, useModal, useMatchBreakpoints } from 'maki-toolkit'
 import { Pool } from 'state/types'
 import BigNumber from 'bignumber.js'
 import { PoolCategory } from 'config/constants/types'
@@ -34,7 +34,7 @@ const HelpIconWrapper = styled.div`
 const EarningsCell: React.FC<EarningsCellProps> = ({ pool, account, userDataLoaded }) => {
   const { t } = useTranslation()
   const { isXs, isSm } = useMatchBreakpoints()
-  const { sousId, earningToken, userData, earningTokenPrice, poolCategory, isAutoVault } = pool 
+  const { sousId, earningToken, userData, earningTokenPrice, poolCategory, isAutoVault } = pool
   const isManualMakiPool = sousId === 0
 
   const earnings = userData?.pendingReward ? new BigNumber(userData.pendingReward) : BIG_ZERO

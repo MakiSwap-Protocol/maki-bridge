@@ -1,7 +1,7 @@
 import { Trade } from 'maki-sdk'
 import React, { Fragment, memo, useContext } from 'react'
 import { ChevronRight } from 'react-feather'
-import { Flex } from 'maki-uikit-v2'
+import { Flex } from 'maki-toolkit'
 import { ThemeContext } from 'styled-components'
 import { TYPE } from 'components/Shared'
 import CurrencyLogo from 'components/CurrencyLogo'

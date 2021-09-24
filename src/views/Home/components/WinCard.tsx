@@ -1,6 +1,6 @@
 import React from 'react'
 // import styled from 'styled-components'
-// import { Heading, Card, CardBody, Flex, ArrowForwardIcon } from 'maki-uikit-v2'
+// import { Heading, Card, CardBody, Flex, ArrowForwardIcon } from 'maki-toolkit'
 // import { NavLink } from 'react-router-dom'
 // import useLotteryTotalPrizesUsd from 'hooks/useLotteryTotalPrizesUsd'
 

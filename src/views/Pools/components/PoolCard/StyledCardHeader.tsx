@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardHeader, Heading, Text, Flex, Image } from 'maki-uikit-v2'
+import { CardHeader, Heading, Text, Flex, Image } from 'maki-toolkit'
 import styled from 'styled-components'
 
 const Wrapper = styled(CardHeader)<{ isFinished?: boolean; background?: string }>`

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, TooltipText, useTooltip } from 'maki-uikit-v2'
+import { Text, TooltipText, useTooltip } from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 import Balance from 'components/Balance'
 

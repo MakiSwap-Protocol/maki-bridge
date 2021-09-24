@@ -1,6 +1,6 @@
 import { Token } from 'maki-sdk'
 import { transparentize } from 'polished'
-import { Button, Text } from 'maki-uikit-v2'
+import { Button, Text } from 'maki-toolkit'
 import React, { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { AlertTriangle } from 'react-feather'
@@ -107,8 +107,8 @@ export default function TokenWarningModal({
             <Text color="failure">Imported Token</Text>
           </AutoRow>
           <Text>
-            Anyone can create an HRC20 token on HECO with <em>any</em> name, including creating fake versions of existing
-            tokens and tokens that claim to represent projects that do not have a token.
+            Anyone can create an HRC20 token on HECO with <em>any</em> name, including creating fake versions of
+            existing tokens and tokens that claim to represent projects that do not have a token.
           </Text>
           <Text>
             This interface can load arbitrary tokens by token addresses. Please take extra caution and do your research

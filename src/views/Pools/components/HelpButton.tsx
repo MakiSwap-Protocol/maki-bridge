@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text, Button, HelpIcon, Link } from 'maki-uikit-v2'
+import { Text, Button, HelpIcon, Link } from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 
 const ButtonText = styled(Text)`

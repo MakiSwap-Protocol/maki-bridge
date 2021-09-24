@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text } from 'maki-uikit-v2'
+import { Text } from 'maki-toolkit'
 
 export const TYPE = {
   main(props: any) {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
-import { useMatchBreakpoints } from 'maki-uikit-v2'
+import { useMatchBreakpoints } from 'maki-toolkit'
 import useDelayedUnmount from 'hooks/useDelayedUnmount'
 import { useFarmUser } from 'state/hooks'
 
@@ -66,8 +66,8 @@ const StyledTr = styled.div`
   border-bottom: 2px solid ${({ theme }) => theme.colors.cardBorder};
   position: relative;
   display: flex;
-  alignItems: center;
-  justifyContent: space-between;
+  alignitems: center;
+  justifycontent: space-between;
 `
 
 const EarnedMobileCell = styled.td`
@@ -166,20 +166,19 @@ const Row: React.FunctionComponent<RowPropsWithLoading> = (props) => {
               case 'apr':
                 return (
                   <CellInner key={key}>
-                    <CellLayout label='APR'>
+                    <CellLayout label="APR">
                       <Apr {...props.apr} hideButton={isMobile} />
                     </CellLayout>
                   </CellInner>
                 )
               default:
-                return (
-                  key === 'earned' ? 
+                return key === 'earned' ? (
                   <CellInner key={key}>
                     <CellLayout label={tableSchema[columnIndex].label}>
                       {React.createElement(cells[key], { ...props[key], userDataReady })}
                     </CellLayout>
                   </CellInner>
-                  :
+                ) : (
                   <CellLargerInner key={key}>
                     <CellLayout label={tableSchema[columnIndex].label}>
                       {isPromotedFarm && details.quoteToken.symbol === 'HT' && <StyledRowAccent />}
@@ -205,12 +204,12 @@ const Row: React.FunctionComponent<RowPropsWithLoading> = (props) => {
           </tr>
           <tr>
             <EarnedMobileCell>
-              <CellLayout label='Earned'>
+              <CellLayout label="Earned">
                 <Earned {...props.earned} userDataReady={userDataReady} />
               </CellLayout>
             </EarnedMobileCell>
             <AprMobileCell>
-              <CellLayout label='APR'>
+              <CellLayout label="APR">
                 <Apr {...props.apr} hideButton />
               </CellLayout>
             </AprMobileCell>

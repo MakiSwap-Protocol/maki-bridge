@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { Currency, Pair } from 'maki-sdk'
-import { Button, ChevronDownIcon, Text, useModal } from 'maki-uikit-v2'
+import { Button, ChevronDownIcon, Text, useModal } from 'maki-toolkit'
 import styled from 'styled-components'
 import { darken } from 'polished'
 import { useCurrencyBalance } from 'state/wallet/hooks'

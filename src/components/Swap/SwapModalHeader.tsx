@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import { Trade, TradeType } from 'maki-sdk'
-import { Button, Text } from 'maki-uikit-v2'
+import { Button, Text } from 'maki-toolkit'
 import { ArrowDown, AlertTriangle } from 'react-feather'
 
 import { Field } from 'state/swap/actions'
@@ -38,10 +38,10 @@ export default function SwapModalHeader({
   showAcceptChanges: boolean
   onAcceptChanges: () => void
 }) {
-  const slippageAdjustedAmounts = useMemo(() => computeSlippageAdjustedAmounts(trade, allowedSlippage), [
-    trade,
-    allowedSlippage,
-  ])
+  const slippageAdjustedAmounts = useMemo(
+    () => computeSlippageAdjustedAmounts(trade, allowedSlippage),
+    [trade, allowedSlippage],
+  )
   const { priceImpactWithoutFee } = useMemo(() => computeTradePriceBreakdown(trade), [trade])
   const priceImpactSeverity = warningSeverity(priceImpactWithoutFee)
 

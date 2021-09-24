@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
-import { Heading, Card, CardBody, Flex, ArrowForwardIcon, Skeleton } from 'maki-uikit-v2'
+import { Heading, Card, CardBody, Flex, ArrowForwardIcon, Skeleton } from 'maki-toolkit'
 import max from 'lodash/max'
 import { NavLink } from 'react-router-dom'
 import BigNumber from 'bignumber.js'
@@ -8,7 +8,6 @@ import { useAppDispatch } from 'state'
 import { useFarms, usePriceMakiHusd } from 'state/hooks'
 import { fetchFarmsPublicDataAsync, nonArchivedFarms } from 'state/farms'
 import { getFarmApr } from 'utils/apr'
-
 
 const StyledFarmStakingCard = styled(Card)`
   margin-left: auto;

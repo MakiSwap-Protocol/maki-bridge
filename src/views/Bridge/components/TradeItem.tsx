@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useState, useMemo, useCallback } f
 import styled from 'styled-components'
 import { darken } from 'polished'
 import { RowBetween } from 'components/Row'
-import { Button, ChevronDownIcon, Text, useModal } from 'maki-uikit-v2'
+import { Button, ChevronDownIcon, Text, useModal } from 'maki-toolkit'
 import { Input as NumericalInput } from 'components/NumericalInput'
 import CoinLogo from 'components/Maki/CoinLogo'
 import { useActiveWeb3React } from 'hooks'

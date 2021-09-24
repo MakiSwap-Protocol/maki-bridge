@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
-import { Button, ChevronUpIcon } from 'maki-uikit-v2'
+import { Button, ChevronUpIcon } from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 import { Pool } from 'state/types'
 import PoolRow from './PoolRow'

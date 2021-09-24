@@ -2,7 +2,7 @@ import React, { useEffect, useCallback, useState } from 'react'
 import styled from 'styled-components'
 import { useWeb3React } from '@web3-react/core'
 import useWeb3 from 'hooks/useWeb3'
-import { Modal, Text, LinkExternal, Flex, Box, Button, Input } from 'maki-uikit-v2'
+import { Modal, Text, LinkExternal, Flex, Box, Button, Input } from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 import { useMerkleDistributorContract } from 'hooks/useContract'
 import Merkle from 'config/constants/merkle'
@@ -24,7 +24,7 @@ interface ClaimModalProps {
 
 const getClaimObjectFromAddress = (address: string) => {
   const keys = Object.keys(Merkle.claims)
-  return Merkle.claims[keys.find(key => key.toLowerCase() === address.toLowerCase())]
+  return Merkle.claims[keys.find((key) => key.toLowerCase() === address.toLowerCase())]
 }
 
 const ClaimModal: React.FC<ClaimModalProps> = ({ onDismiss }) => {
@@ -38,17 +38,20 @@ const ClaimModal: React.FC<ClaimModalProps> = ({ onDismiss }) => {
   const [error, setError] = useState('')
   const [message, setMessage] = useState('')
 
-  const getEligibility = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    const address = event.target.value
-    setRecipientAddress(address)
-    const eligibility = !!getClaimObjectFromAddress(address)
-    setIsEligible(eligibility)
-    if (eligibility) {
-      setError('')
-    } else {
-      setError('Address has no available claim')
-    }
-  }, [setIsEligible, setError]);
+  const getEligibility = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const address = event.target.value
+      setRecipientAddress(address)
+      const eligibility = !!getClaimObjectFromAddress(address)
+      setIsEligible(eligibility)
+      if (eligibility) {
+        setError('')
+      } else {
+        setError('Address has no available claim')
+      }
+    },
+    [setIsEligible, setError],
+  )
 
   const getAirdropStats = useCallback(async () => {
     const claimObject: any = getClaimObjectFromAddress(recipientAddress)
@@ -65,14 +68,9 @@ const ClaimModal: React.FC<ClaimModalProps> = ({ onDismiss }) => {
   const claimAirdrop = useCallback(async () => {
     const claimObject = getClaimObjectFromAddress(recipientAddress)
 
-    const tx = await airdropContract
-      .claim(
-        claimObject.index,
-        recipientAddress,
-        claimObject.amount,
-        claimObject.proof,
-        { from: account }
-      )
+    const tx = await airdropContract.claim(claimObject.index, recipientAddress, claimObject.amount, claimObject.proof, {
+      from: account,
+    })
     setMessage('Your transaction has been recorded')
     const receipt = await tx.wait()
     if (receipt.status) {
@@ -99,7 +97,9 @@ const ClaimModal: React.FC<ClaimModalProps> = ({ onDismiss }) => {
       <Flex justifyContent="center">
         <Box maxWidth="320px">
           <Text fontSize="14px">
-            {t('Enter an address to trigger a MAKI claim. If the address has any claimable MAKI it will be sent to them on submission.')}
+            {t(
+              'Enter an address to trigger a MAKI claim. If the address has any claimable MAKI it will be sent to them on submission.',
+            )}
           </Text>
           <InputWrapper>
             <StyledInput
@@ -111,7 +111,9 @@ const ClaimModal: React.FC<ClaimModalProps> = ({ onDismiss }) => {
           </InputWrapper>
           <Text color="red">{error}</Text>
           <Text color="green">{message}</Text>
-          <Button width="100%" mt="16px" disabled={!isEligible} onClick={claimAirdrop}>Claim MAKI</Button>
+          <Button width="100%" mt="16px" disabled={!isEligible} onClick={claimAirdrop}>
+            Claim MAKI
+          </Button>
         </Box>
       </Flex>
     </Modal>

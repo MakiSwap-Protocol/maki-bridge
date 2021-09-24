@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { JSBI, Pair, Percent } from 'maki-sdk'
-import { Button, Card as UIKitCard, CardBody, Text, Flex } from 'maki-uikit-v2'
+import { Button, Card as UIKitCard, CardBody, Text, Flex } from 'maki-toolkit'
 import { darken } from 'polished'
 import { ChevronDown, ChevronUp } from 'react-feather'
 import { Link } from 'react-router-dom'
@@ -66,10 +66,10 @@ export function MinimalPositionCard({ pair, showUnwrapped = false }: PositionCar
             <AutoColumn gap="12px">
               <FixedHeightRow>
                 <RowFixed>
-                <Flex justifyContent="center">
-                  <Text style={{ textTransform: 'uppercase', fontWeight: 600 }} fontSize="14px" color="textSubtle">
-                    LP Tokens in your Wallet
-                  </Text>
+                  <Flex justifyContent="center">
+                    <Text style={{ textTransform: 'uppercase', fontWeight: 600 }} fontSize="14px" color="textSubtle">
+                      LP Tokens in your Wallet
+                    </Text>
                   </Flex>
                 </RowFixed>
               </FixedHeightRow>

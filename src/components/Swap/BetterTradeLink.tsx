@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react'
 import { stringify } from 'qs'
 import { useLocation } from 'react-router'
-import { Text } from 'maki-uikit-v2'
+import { Text } from 'maki-toolkit'
 import useParsedQueryString from 'hooks/useParsedQueryString'
 import { DEFAULT_VERSION, Version } from 'hooks/useToggledVersion'
-import { StyledInternalLink } from "components/Shared"
+import { StyledInternalLink } from 'components/Shared'
 import { YellowCard } from 'components/Card'
 import { AutoColumn } from 'components/Column'
 
@@ -17,8 +17,8 @@ export default function BetterTradeLink({ version }: { version: Version }) {
       ...location,
       search: `?${stringify({
         ...search,
-        use: version !== DEFAULT_VERSION ? version : undefined
-      })}`
+        use: version !== DEFAULT_VERSION ? version : undefined,
+      })}`,
     }
   }, [location, search, version])
 

@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import { Heading, IconButton, CloseIcon } from 'maki-uikit-v2'
+import { Heading, IconButton, CloseIcon } from 'maki-toolkit'
 import { AutoColumn, ColumnCenter } from 'components/Column'
 
 export const Wrapper = styled.div`

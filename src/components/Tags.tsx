@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tag, VerifiedIcon, CommunityIcon, HuobiIcon, RefreshIcon, AutoRenewIcon, TagProps } from 'maki-uikit-v2'
+import { Tag, VerifiedIcon, CommunityIcon, HuobiIcon, RefreshIcon, AutoRenewIcon, TagProps } from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 
 const CoreTag: React.FC<TagProps> = (props) => {

@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 // eslint-disable-next-line import/no-unresolved
-import { MakiTheme } from 'maki-uikit-v2/dist/theme'
+import { MakiTheme } from 'maki-toolkit/dist/theme'
 
 declare module 'styled-components' {
   /* eslint-disable @typescript-eslint/no-empty-interface */

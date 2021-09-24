@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Tag, Flex, Heading, Image } from 'maki-uikit-v2'
+import { Tag, Flex, Heading, Image } from 'maki-toolkit'
 import { CommunityTag, CoreTag } from 'components/Tags'
 
 export interface ExpandableSectionProps {

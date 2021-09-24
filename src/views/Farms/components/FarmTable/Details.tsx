@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ChevronDownIcon, useMatchBreakpoints } from 'maki-uikit-v2'
+import { ChevronDownIcon, useMatchBreakpoints } from 'maki-toolkit'
 
 interface DetailsProps {
   actionPanelToggled: boolean

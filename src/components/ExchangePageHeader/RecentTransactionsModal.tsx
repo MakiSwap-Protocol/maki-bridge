@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { CheckmarkCircleIcon, ErrorIcon, Flex, LinkExternal, Text, Modal, Button } from 'maki-uikit-v2'
+import { CheckmarkCircleIcon, ErrorIcon, Flex, LinkExternal, Text, Modal, Button } from 'maki-toolkit'
 import { useActiveWeb3React } from 'hooks'
 import { getEtherscanLink } from 'utils'
 import { isTransactionRecent, useAllTransactions } from 'state/transactions/hooks'

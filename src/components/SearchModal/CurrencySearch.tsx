@@ -1,6 +1,6 @@
 import React, { KeyboardEvent, RefObject, useCallback, useMemo, useRef, useState, useEffect } from 'react'
 import { Currency, HUOBI, Token } from 'maki-sdk'
-import { Text, Input, Box } from 'maki-uikit-v2'
+import { Text, Input, Box } from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 import { FixedSizeList } from 'react-window'
 import { useAudioModeManager } from 'state/user/hooks'

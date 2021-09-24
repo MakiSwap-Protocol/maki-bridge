@@ -1,4 +1,4 @@
-import { MenuEntry } from 'maki-uikit-v2'
+import { MenuEntry } from 'maki-toolkit'
 import { ContextApi } from 'contexts/Localization/types'
 
 const MAKISWAP_URL = 'https://app.makiswap.com'

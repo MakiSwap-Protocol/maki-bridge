@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Button, useModal, Skeleton } from 'maki-uikit-v2'
+import { Flex, Button, useModal, Skeleton } from 'maki-toolkit'
 import BigNumber from 'bignumber.js'
 import { useTranslation } from 'contexts/Localization'
 import { Pool } from 'state/types'

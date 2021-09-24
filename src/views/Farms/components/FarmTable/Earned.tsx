@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Skeleton } from 'maki-uikit-v2'
+import { Skeleton } from 'maki-toolkit'
 
 export interface EarnedProps {
   earnings: number

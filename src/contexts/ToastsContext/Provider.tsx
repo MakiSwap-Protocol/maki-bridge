@@ -1,14 +1,14 @@
 import React, { createContext, ReactNode, useCallback, useState } from 'react'
 import styled from 'styled-components'
 import { kebabCase } from 'lodash'
-import { Toast, toastTypes } from 'maki-uikit-v2'
+import { Toast, toastTypes } from 'maki-toolkit'
 import { ToastContextApi } from './types'
 
 export const ToastsContext = createContext<ToastContextApi>(undefined)
 
 const StyledToastContainer = styled.div`
   & .enter-done > div {
-    background-color: #CADDF7;
+    background-color: #caddf7;
   }
 `
 
@@ -56,9 +56,7 @@ export const ToastsProvider: React.FC = ({ children }) => {
 
   return (
     <ToastsContext.Provider value={{ toasts, clear, remove, toastError, toastInfo, toastSuccess, toastWarning }}>
-      <StyledToastContainer>
-        {children}
-      </StyledToastContainer>
+      <StyledToastContainer>{children}</StyledToastContainer>
     </ToastsContext.Provider>
   )
 }

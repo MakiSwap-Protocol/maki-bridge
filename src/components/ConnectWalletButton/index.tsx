@@ -1,9 +1,9 @@
 import React from 'react'
 import { useWeb3React } from '@web3-react/core'
-import { Button, ButtonProps, ConnectorNames, useWalletModal } from 'maki-uikit-v2'
+import { Button, ButtonProps, ConnectorNames, useWalletModal } from 'maki-toolkit'
 import { injected, walletconnect } from 'connectors'
 
-const UnlockButton: React.FC<ButtonProps> = props => {
+const UnlockButton: React.FC<ButtonProps> = (props) => {
   const { account, activate, deactivate } = useWeb3React()
 
   const handleLogin = (connectorId) => {

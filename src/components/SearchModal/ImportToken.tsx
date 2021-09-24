@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Token, Currency } from 'maki-sdk'
-import { Button, Text, ErrorIcon, Flex, Checkbox, Link, Tag } from 'maki-uikit-v2'
+import { Button, Text, ErrorIcon, Flex, Checkbox, Link, Tag } from 'maki-toolkit'
 import { AutoColumn } from 'components/Layout/Column'
 import { useAddUserToken } from 'state/user/hooks'
 import { getEtherscanLink } from 'utils'

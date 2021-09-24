@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
-import { Heading, Flex, Text, useMatchBreakpoints } from 'maki-uikit-v2'
+import { Heading, Flex, Text, useMatchBreakpoints } from 'maki-toolkit'
 import orderBy from 'lodash/orderBy'
 import partition from 'lodash/partition'
 import { useTranslation } from 'contexts/Localization'
@@ -49,7 +49,7 @@ const ControlStretch = styled(Flex)`
 `
 // eslint-disable-next-line
 const StyledHeading = styled(Heading)`
-  color: #5F6471;
+  color: #5f6471;
 `
 
 const NUMBER_OF_POOLS_VISIBLE = 18
@@ -155,7 +155,7 @@ const Pools: React.FC = () => {
             if (!pool.userData || !pool.earningTokenPrice) {
               return 0
             }
-            return  pool.userData.pendingReward.times(pool.earningTokenPrice).toNumber()
+            return pool.userData.pendingReward.times(pool.earningTokenPrice).toNumber()
           },
           'desc',
         )
@@ -191,11 +191,7 @@ const Pools: React.FC = () => {
   const cardLayout = (
     <CardLayout>
       {poolsToShow().map((pool) =>
-        pool.isAutoVault ? (
-          <> </>
-        ) : (
-          <PoolCard key={pool.sousId} pool={pool} account={account} />
-        ),
+        pool.isAutoVault ? <> </> : <PoolCard key={pool.sousId} pool={pool} account={account} />,
       )}
     </CardLayout>
   )
@@ -205,9 +201,9 @@ const Pools: React.FC = () => {
   return (
     <>
       <PageHeader background="url(/images/banner-bg.png) no-repeat">
-        <Flex justifyContent="space-between" flexDirection={ isXl ? 'row' : 'column'}>
+        <Flex justifyContent="space-between" flexDirection={isXl ? 'row' : 'column'}>
           <div>
-            <Heading as="h1" scale="xxl" color="secondary" mb={ isXl ? '24px' : '5px'}>
+            <Heading as="h1" scale="xxl" color="secondary" mb={isXl ? '24px' : '5px'}>
               {t('Soy Pools')}
             </Heading>
             <StyledHeading scale="md" color="text">

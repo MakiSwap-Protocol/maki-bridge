@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import BigNumber from 'bignumber.js'
 import styled, { keyframes } from 'styled-components'
-import { Flex, Text, Skeleton } from 'maki-uikit-v2'
+import { Flex, Text, Skeleton } from 'maki-toolkit'
 import { Farm } from 'state/types'
 import { getHecoInfoAddressUrl } from 'utils/hecoinfo'
 import { useTranslation } from 'contexts/Localization'

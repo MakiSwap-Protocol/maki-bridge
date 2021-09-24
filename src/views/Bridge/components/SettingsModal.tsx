@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal } from 'maki-uikit-v2'
+import { Modal } from 'maki-toolkit'
 import { useInSlippageTolerance, useOutSlippageTolerance } from 'state/persist/hooks'
 import SlippageToleranceSetting from './SlippageToleranceSetting'
 import TransactionDeadlineSetting from './TransactionDeadlineSetting'

@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import { Heading, IconButton, Text, Flex, useModal } from 'maki-uikit-v2'
+import { Heading, IconButton, Text, Flex, useModal } from 'maki-toolkit'
 import SettingsModal from './SettingsModal'
 
 interface PageHeaderProps {

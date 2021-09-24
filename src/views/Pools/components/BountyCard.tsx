@@ -13,7 +13,7 @@ import {
   useModal,
   Box,
   useTooltip,
-} from 'maki-uikit-v2'
+} from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useMakiVault, usePriceMakiHusd } from 'state/hooks'

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Price } from 'maki-sdk'
-import { SyncAltIcon, Text } from 'maki-uikit-v2'
+import { SyncAltIcon, Text } from 'maki-toolkit'
 import { StyledBalanceMaxMini } from './styleds'
 
 interface TradePriceProps {

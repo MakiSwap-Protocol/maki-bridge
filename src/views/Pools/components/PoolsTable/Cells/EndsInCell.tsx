@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Link, Skeleton, Text, TimerIcon } from 'maki-uikit-v2'
+import { Flex, Link, Skeleton, Text, TimerIcon } from 'maki-toolkit'
 import { getHecoInfoBlockCountdownUrl } from 'utils/hecoinfo'
 import { Pool } from 'state/types'
 import { useBlock } from 'state/hooks'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button, Flex, Text, Input, InputProps } from 'maki-uikit-v2'
+import { Box, Button, Flex, Text, Input, InputProps } from 'maki-toolkit'
 
 interface TokenInputProps extends InputProps {
   max: number | string

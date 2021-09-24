@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Modal, Text, Flex, Image, Button, BalanceInput, AutoRenewIcon } from 'maki-uikit-v2'
+import { Modal, Text, Flex, Image, Button, BalanceInput, AutoRenewIcon } from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 import { useWeb3React } from '@web3-react/core'
 import { BASE_EXCHANGE_URL } from 'config'
@@ -81,7 +81,8 @@ const VaultStakeModal: React.FC<VaultStakeModalProps> = ({ pool, stakingMax, isR
     const isWithdrawingAll = sharesRemaining.lte(triggerWithdrawAllThreshold)
 
     if (isWithdrawingAll) {
-      makiVaultContract.withdrawAll()
+      makiVaultContract
+        .withdrawAll()
         .on('sending', () => {
           setPendingTx(true)
         })
@@ -98,7 +99,8 @@ const VaultStakeModal: React.FC<VaultStakeModalProps> = ({ pool, stakingMax, isR
           setPendingTx(false)
         })
     } else {
-      makiVaultContract.withdraw(shareStakeToWithdraw.sharesAsBigNumber.toString())
+      makiVaultContract
+        .withdraw(shareStakeToWithdraw.sharesAsBigNumber.toString())
         // .toString() being called to fix a BigNumber error in prod
         // as suggested here https://github.com/ChainSafe/web3.js/issues/2077
         .on('sending', () => {
@@ -120,7 +122,8 @@ const VaultStakeModal: React.FC<VaultStakeModalProps> = ({ pool, stakingMax, isR
   }
 
   const handleDeposit = async (convertedStakeAmount: BigNumber) => {
-    makiVaultContract.deposit(convertedStakeAmount.toString())
+    makiVaultContract
+      .deposit(convertedStakeAmount.toString())
       // .toString() being called to fix a BigNumber error in prod
       // as suggested here https://github.com/ChainSafe/web3.js/issues/2077
       .on('sending', () => {

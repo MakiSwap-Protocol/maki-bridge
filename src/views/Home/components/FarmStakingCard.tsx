@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
-import { Heading, Card, CardBody, Button } from 'maki-uikit-v2'
+import { Heading, Card, CardBody, Button } from 'maki-toolkit'
 import { harvest } from 'utils/callHelpers'
 import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'

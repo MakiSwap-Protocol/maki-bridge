@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, useWalletModal } from 'maki-uikit-v2'
+import { Button, useWalletModal } from 'maki-toolkit'
 import useAuth from 'hooks/useAuth'
 import { useTranslation } from 'contexts/Localization'
 

@@ -10,7 +10,7 @@ import {
   ButtonMenuItem,
   HelpIcon,
   useTooltip,
-} from 'maki-uikit-v2'
+} from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 import useTheme from 'hooks/useTheme'
 import { useSousHarvest } from 'hooks/useHarvest'
@@ -42,7 +42,7 @@ const CollectModal: React.FC<CollectModalProps> = ({
   const { t } = useTranslation()
   const { theme } = useTheme()
   const { toastSuccess, toastError } = useToast()
-  const { onReward } = useSousHarvest(sousId, isHtPool) 
+  const { onReward } = useSousHarvest(sousId, isHtPool)
   const { onStake } = useSousStake(sousId, isHtPool)
   const [pendingTx, setPendingTx] = useState(false)
   const [shouldCompound, setShouldCompound] = useState(isCompoundPool)

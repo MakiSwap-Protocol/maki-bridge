@@ -1,6 +1,6 @@
 import React from 'react'
 import { Currency, Percent, Price } from 'maki-sdk'
-import { Text } from 'maki-uikit-v2'
+import { Text } from 'maki-toolkit'
 import { ONE_BIPS } from 'config/constants'
 import { Field } from 'state/mint/actions'
 import { AutoColumn } from 'components/Column'

@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js'
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Text, Box } from 'maki-uikit-v2'
+import { Flex, Text, Box } from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 import { useCheckVaultApprovalStatus } from 'hooks/useApprove'
 import { Pool } from 'state/types'

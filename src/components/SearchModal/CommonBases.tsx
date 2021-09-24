@@ -1,6 +1,6 @@
 import React from 'react'
 import { ChainId, Currency, currencyEquals, HUOBI, Token } from 'maki-sdk'
-import { Text } from 'maki-uikit-v2'
+import { Text } from 'maki-toolkit'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { HelpIcon, Skeleton, useTooltip } from 'maki-uikit-v2'
+import { HelpIcon, Skeleton, useTooltip } from 'maki-toolkit'
 
 const ReferenceElement = styled.div`
   display: inline-block;

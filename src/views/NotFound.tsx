@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button, Heading, Text } from 'maki-uikit-v2' // disabled until changed to makiIcon: LogoIcon
+import { Button, Heading, Text } from 'maki-toolkit' // disabled until changed to makiIcon: LogoIcon
 import Page from 'components/Layout/Page'
 
 const StyledNotFound = styled.div`

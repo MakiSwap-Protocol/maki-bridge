@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect, useMemo, useState } from 're
 import { CurrencyAmount, Currency, JSBI, Token, Trade } from 'maki-sdk'
 import { useDispatch, useSelector } from 'react-redux'
 import { ArrowDown } from 'react-feather'
-import { CardBody, ArrowDownIcon, Button, IconButton, Text } from 'maki-uikit-v2'
+import { CardBody, ArrowDownIcon, Button, IconButton, Text } from 'maki-toolkit'
 import styled, { ThemeContext } from 'styled-components'
 import AddressInputPanel from 'components/AddressInputPanel'
 import Card, { GreyCard } from 'components/Card'

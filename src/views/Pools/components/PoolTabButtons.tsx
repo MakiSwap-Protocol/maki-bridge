@@ -1,14 +1,6 @@
 import React from 'react'
 import { useRouteMatch, Link } from 'react-router-dom'
-import {
-  ButtonMenu,
-  ButtonMenuItem,
-  Toggle,
-  Text,
-  Flex,
-  NotificationDot,
-  useMatchBreakpoints,
-} from 'maki-uikit-v2'
+import { ButtonMenu, ButtonMenuItem, Toggle, Text, Flex, NotificationDot, useMatchBreakpoints } from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 import { ViewMode } from 'views/Farms/components/types'
 import ToggleView from './ToggleView/ToggleView'
@@ -42,8 +34,7 @@ const PoolTabButtons = ({ stakedOnly, setStakedOnly, hasStakeInFinishedPools, vi
 
   if (isXs || isSm) {
     return (
-      <Flex flexDirection="column" alignItems="flex-start" mb="24px"
-      paddingRight='50px'>
+      <Flex flexDirection="column" alignItems="flex-start" mb="24px" paddingRight="50px">
         <Flex width="100%" justifyContent="space-between">
           {viewModeToggle}
           {liveOrFinishedSwitch}
@@ -58,7 +49,6 @@ const PoolTabButtons = ({ stakedOnly, setStakedOnly, hasStakeInFinishedPools, vi
       alignItems="center"
       justifyContent={['space-around', 'space-around', 'flex-start']}
       mb={['24px', '24px', '24px', '0px']}
-
     >
       {viewModeToggle}
       {liveOrFinishedSwitch}

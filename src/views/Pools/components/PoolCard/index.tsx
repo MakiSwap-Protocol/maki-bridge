@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js'
 import React from 'react'
-import { CardBody, Flex, Text, CardRibbon } from 'maki-uikit-v2'
+import { CardBody, Flex, Text, CardRibbon } from 'maki-toolkit'
 import UnlockButton from 'components/UnlockButton'
 import { useTranslation } from 'contexts/Localization'
 import { BIG_ZERO } from 'utils/bigNumber'

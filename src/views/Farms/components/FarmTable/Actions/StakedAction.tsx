@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
-import { Button, useModal, IconButton, AddIcon, MinusIcon, Skeleton } from 'maki-uikit-v2'
+import { Button, useModal, IconButton, AddIcon, MinusIcon, Skeleton } from 'maki-toolkit'
 import { useLocation } from 'react-router-dom'
 import UnlockButton from 'components/UnlockButton'
 import { useWeb3React } from '@web3-react/core'
@@ -145,7 +145,7 @@ const Staked: React.FunctionComponent<StakedActionProps> = ({
         </ActionTitles>
         <ActionContent>
           <Button
-            width='100%'
+            width="100%"
             onClick={onPresentDeposit}
             variant="secondary"
             disabled={['history', 'archived'].some((item) => location.pathname.includes(item))}
@@ -176,7 +176,7 @@ const Staked: React.FunctionComponent<StakedActionProps> = ({
         <Subtle>ENABLE FARM</Subtle>
       </ActionTitles>
       <ActionContent>
-        <Button width='100%' disabled={requestedApproval} onClick={handleApprove} variant="secondary">
+        <Button width="100%" disabled={requestedApproval} onClick={handleApprove} variant="secondary">
           Enable
         </Button>
       </ActionContent>

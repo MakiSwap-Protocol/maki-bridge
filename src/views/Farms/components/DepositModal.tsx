@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useMemo, useState } from 'react'
-import { Button, Modal, LinkExternal } from 'maki-uikit-v2'
+import { Button, Modal, LinkExternal } from 'maki-toolkit'
 import ModalActions from 'components/ModalActions'
 import ModalInput from 'components/ModalInput'
 import { getFullDisplayBalance } from 'utils/formatBalance'
@@ -37,7 +37,7 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
   }, [fullBalance, setVal])
 
   return (
-    <Modal title='Stake LP tokens' onDismiss={onDismiss}>
+    <Modal title="Stake LP tokens" onDismiss={onDismiss}>
       <ModalInput
         value={val}
         onSelectMax={handleSelectMax}
@@ -45,14 +45,14 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
         max={fullBalance}
         symbol={tokenName}
         addLiquidityUrl={addLiquidityUrl}
-        inputTitle='Stake'
+        inputTitle="Stake"
       />
       <ModalActions>
-        <Button variant="secondary" onClick={onDismiss} width='100%' disabled={pendingTx}>
+        <Button variant="secondary" onClick={onDismiss} width="100%" disabled={pendingTx}>
           Cancel
         </Button>
         <Button
-          width='100%'
+          width="100%"
           disabled={pendingTx || !valNumber.isFinite() || valNumber.eq(0) || valNumber.gt(fullBalanceNumber)}
           onClick={async () => {
             setPendingTx(true)

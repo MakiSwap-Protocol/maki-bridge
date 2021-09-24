@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Modal, Text, LinkExternal, Flex, Box } from 'maki-uikit-v2'
+import { Modal, Text, LinkExternal, Flex, Box } from 'maki-toolkit'
 import { useTranslation } from 'contexts/Localization'
 import { tokenEarnedPerThousandDollarsCompounding, getRoi } from 'utils/compoundApyHelpers'
 

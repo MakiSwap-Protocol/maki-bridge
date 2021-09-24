@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { useMatchBreakpoints } from 'maki-uikit-v2'
+import { useMatchBreakpoints } from 'maki-toolkit'
 import { Pool } from 'state/types'
 import { useMakiVault } from 'state/hooks'
 import useDelayedUnmount from 'hooks/useDelayedUnmount'
