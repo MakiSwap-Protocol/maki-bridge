@@ -1,0 +1,47 @@
+{
+  "name": "makiswap",
+  "timestamp": "2021-06-01T00:00:00+00:00",
+  "version": {
+    "major": 0,
+    "minor": 1,
+    "patch": 0
+  },
+  "logoURI": "https://raw.githubusercontent.com/makiswap-protocol/heco-token-list/main/src/tokens/maki.png",
+  "keywords": [
+    "makiswap",
+    "maki",
+    "huobi",
+    "heco",
+    "hrc20",
+    "default",
+    "token",
+    "list"
+  ],
+  "tokens": [
+    {
+      "address": "0xaaf30bfd42bd9721e77cc31ab85bac893de07625",
+      "chainId": 128,
+      "name": "Avalanche",
+      "symbol": "AVAX",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/makiswap-protocol/heco-token-list/master/src/tokens/0xaaf30bfd42bd9721e77cc31ab85bac893de07625/logo.png"
+    },
+    
+    {
+      "address": "0xecb56cf772b5c9a6907fb7d32387da2fcbfb63b4",
+      "chainId": 128,
+      "name": "Litecoin",
+      "symbol": "LTC",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/makiswap-protocol/heco-token-list/master/src/tokens/0xecb56cf772b5c9a6907fb7d32387da2fcbfb63b4/logo.png"
+    },
+    {
+      "address": "0x777850281719d5a96c29812ab72f822e0e09f3da",
+      "chainId": 128,
+      "name": "Synthetix",
+      "symbol": "SNX",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/makiswap-protocol/heco-token-list/master/src/tokens/0x777850281719d5a96c29812ab72f822e0e09f3da/logo.png"
+    }
+  ]
+}

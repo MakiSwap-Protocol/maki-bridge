@@ -1,0 +1,152 @@
+[
+  {
+    "symbol": "OKT",
+    "decimals": 18,
+    "logo": "/icons/66/0x8F8526dbfd6E38E3D8307702cA8469Bae6C56C15.png",
+    "address": ""
+  },
+  {
+    "symbol": "BabyDoge",
+    "decimals": 9,
+    "logo": "/icons/66/0x97513e975a7fA9072c72C92d8000B0dB90b163c5.png",
+    "address": "0x97513e975a7fA9072c72C92d8000B0dB90b163c5"
+  },
+  {
+    "symbol": "BORING",
+    "decimals": 18,
+    "logo": "/icons/66/0x5cE01aa1528A6A0C8EDEcC4cEe909F0a24CF54de.png",
+    "address": "0x5cE01aa1528A6A0C8EDEcC4cEe909F0a24CF54de"
+  },
+  {
+    "symbol": "BTCK",
+    "decimals": 18,
+    "logo": "/icons/66/0x54e4622DC504176b3BB432dCCAf504569699a7fF.png",
+    "address": "0x54e4622DC504176b3BB432dCCAf504569699a7fF"
+  },
+  {
+    "symbol": "CFXK",
+    "decimals": 18,
+    "logo": "/icons/66/0xFcd4d15f09548cd90EfcAF0B1d9531BBa670B7B1.png",
+    "address": "0xFcd4d15f09548cd90EfcAF0B1d9531BBa670B7B1"
+  },
+  {
+    "symbol": "DOTK",
+    "decimals": 18,
+    "logo": "/icons/66/0xabc732f6f69a519F6d508434481376B6221eb7d5.png",
+    "address": "0xabc732f6f69a519F6d508434481376B6221eb7d5"
+  },
+  {
+    "symbol": "ETHK",
+    "decimals": 18,
+    "logo": "/icons/66/0xEF71CA2EE68F45B9Ad6F72fbdb33d707b872315C.png",
+    "address": "0xEF71CA2EE68F45B9Ad6F72fbdb33d707b872315C"
+  },
+  {
+    "symbol": "FILK",
+    "decimals": 18,
+    "logo": "/icons/66/0x3F8969Be2FC0770dCc174968e4B4ff146E0ACDaF.png",
+    "address": "0x3F8969Be2FC0770dCc174968e4B4ff146E0ACDaF"
+  },
+  {
+    "symbol": "FIN",
+    "decimals": 18,
+    "logo": "/icons/66/0x8D3573f24c0aa3819A2f5b02b2985dD82B487715.png",
+    "address": "0x8D3573f24c0aa3819A2f5b02b2985dD82B487715"
+  },
+  {
+    "symbol": "FLUX",
+    "decimals": 18,
+    "logo": "/icons/66/0xd0C6821aba4FCC65e8f1542589e64BAe9dE11228.png",
+    "address": "0xd0C6821aba4FCC65e8f1542589e64BAe9dE11228"
+  },
+  {
+    "symbol": "KLT",
+    "decimals": 18,
+    "logo": "/icons/66/0x39071D9E7a52e8685F1385d6fA17babfc58ce9C3.png",
+    "address": "0x39071D9E7a52e8685F1385d6fA17babfc58ce9C3"
+  },
+  {
+    "symbol": "KST",
+    "decimals": 18,
+    "logo": "/icons/66/0xab0d1578216A545532882e420A8C61Ea07B00B12.png",
+    "address": "0xab0d1578216A545532882e420A8C61Ea07B00B12"
+  },
+  {
+    "symbol": "LTCK",
+    "decimals": 18,
+    "logo": "/icons/66/0xfA520efC34C81bfC1E3DD48b7fE9fF326049f986.png",
+    "address": "0xfA520efC34C81bfC1E3DD48b7fE9fF326049f986"
+  },
+  {
+    "symbol": "NULS",
+    "decimals": 8,
+    "logo": "/icons/66/0x8CD6e29d3686d24d3C2018CEe54621eA0f89313B.png",
+    "address": "0x8CD6e29d3686d24d3C2018CEe54621eA0f89313B"
+  },
+  {
+    "symbol": "OKB",
+    "decimals": 18,
+    "logo": "/icons/66/0xdF54B6c6195EA4d948D03bfD818D365cf175cFC2.png",
+    "address": "0xdF54B6c6195EA4d948D03bfD818D365cf175cFC2"
+  },
+  {
+    "symbol": "ORG",
+    "decimals": 18,
+    "logo": "/icons/66/0x79B627bC95fa5B36ecA53eB39c3cdf43AaFDD10f.png",
+    "address": "0x79B627bC95fa5B36ecA53eB39c3cdf43AaFDD10f"
+  },
+  {
+    "symbol": "pDAIK",
+    "decimals": 8,
+    "logo": "/icons/66/0x311aEA58Ca127B955890647413846E351df32554.png",
+    "address": "0x311aEA58Ca127B955890647413846E351df32554"
+  },
+  {
+    "symbol": "PGO",
+    "decimals": 8,
+    "logo": "/icons/66/0x82Ce2bF9729d92D5B6aa34031B1C7c68CE0adab9.png",
+    "address": "0x82Ce2bF9729d92D5B6aa34031B1C7c68CE0adab9"
+  },
+  {
+    "symbol": "SPX",
+    "decimals": 18,
+    "logo": "/icons/66/0x20415e2D1FEF61026A18D3324747BBd205c8608c.png",
+    "address": "0x20415e2D1FEF61026A18D3324747BBd205c8608c"
+  },
+  {
+    "symbol": "SXC",
+    "decimals": 18,
+    "logo": "/icons/66/0x0a3c69b510eA47624eE4D4C5b630ae06cd33eB73.png",
+    "address": "0x0a3c69b510eA47624eE4D4C5b630ae06cd33eB73"
+  },
+  {
+    "symbol": "USDC",
+    "decimals": 18,
+    "logo": "/icons/66/0xc946DAf81b08146B1C7A8Da2A851Ddf2B3EAaf85.png",
+    "address": "0xc946DAf81b08146B1C7A8Da2A851Ddf2B3EAaf85"
+  },
+  {
+    "symbol": "USDK",
+    "decimals": 18,
+    "logo": "/icons/66/0xdCAC52E001f5bd413aa6ea83956438F29098166b.png",
+    "address": "0xdCAC52E001f5bd413aa6ea83956438F29098166b"
+  },
+  {
+    "symbol": "USDT",
+    "decimals": 18,
+    "logo": "/icons/66/0x382bB369d343125BfB2117af9c149795C6C65C50.png",
+    "address": "0x382bB369d343125BfB2117af9c149795C6C65C50"
+  },
+  {
+    "symbol": "WING",
+    "decimals": 9,
+    "logo": "/icons/66/0x7A47ab305b8a2A3F4020d13FA9EF73cDdCc0e7D4.png",
+    "address": "0x7A47ab305b8a2A3F4020d13FA9EF73cDdCc0e7D4"
+  },
+  {
+    "symbol": "WOKT",
+    "decimals": 18,
+    "logo": "/icons/66/0x8F8526dbfd6E38E3D8307702cA8469Bae6C56C15.png",
+    "address": "0x8F8526dbfd6E38E3D8307702cA8469Bae6C56C15"
+  }
+]
