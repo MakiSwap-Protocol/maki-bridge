@@ -12,6 +12,14 @@
     "address": "0xa71EdC38d189767582C38A3145b5873052c3e47a"
   },
   {
+    "address": "0x5fad6fbba4bba686ba9b8052cf0bd51699f38b93",
+    "chainId": 128,
+    "name": "MakiSwap",
+    "symbol": "MAKI",
+    "decimals": 18,
+    "logo": "https://raw.githubusercontent.com/makiswap-protocol/heco-token-list/master/src/tokens/0x5fad6fbba4bba686ba9b8052cf0bd51699f38b93/logo.png"
+  },
+  {
     "symbol": "TUSD",
     "decimals": 18,
     "logo": "/icons/128/0x5eE41aB6edd38cDfB9f6B4e6Cf7F75c87E170d98.png",
