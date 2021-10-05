@@ -644,7 +644,7 @@ const encodeFunc = (provider, storeData: BrideState, account, chainId): { data?:
       // toChain
       mapChainIdToNames[outToken.chainId],
       // channel
-      'BUTTER',
+      'MAKISWAP',
     ]
     result = {
       data: ABI.encodeFunctionCall(eth2token(), params),
@@ -677,7 +677,7 @@ const encodeFunc = (provider, storeData: BrideState, account, chainId): { data?:
       // toChain
       mapChainIdToNames[outToken.chainId],
       // channel
-      'BUTTER',
+      'MAKISWAP',
     ]
 
     result = {
