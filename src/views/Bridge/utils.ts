@@ -326,8 +326,133 @@ export const approve = async (token, spender, account, chainId) => {
   )
 }
 
+// 跨链兑换  erc20 -> erc20
+const token2token = () => ({
+  inputs: [
+    {
+      internalType: 'uint256',
+      name: 'amountIn',
+      type: 'uint256',
+    },
+    {
+      components: [
+        {
+          internalType: 'uint256',
+          name: 'amount0OutMin',
+          type: 'uint256',
+        },
+        {
+          internalType: 'uint256',
+          name: 'amount1OutMin',
+          type: 'uint256',
+        },
+        {
+          internalType: 'uint256',
+          name: 'rewardsMin',
+          type: 'uint256',
+        },
+        {
+          internalType: 'uint256',
+          name: 'deadline',
+          type: 'uint256',
+        },
+      ],
+      internalType: 'struct HGSwapBaseStorage.SwapLimit',
+      name: 'limit',
+      type: 'tuple',
+    },
+    {
+      internalType: 'address',
+      name: 'router',
+      type: 'address',
+    },
+    {
+      internalType: 'address[]',
+      name: 'path',
+      type: 'address[]',
+    },
+    {
+      internalType: 'bytes',
+      name: 'encodeToInfo',
+      type: 'bytes',
+    },
+    {
+      internalType: 'string',
+      name: 'channel',
+      type: 'string',
+    },
+  ],
+  name: 'swapExactTokensForTokensSupportingFeeOnTransferTokensCrossChain',
+  outputs: [],
+  stateMutability: 'nonpayable',
+  type: 'function',
+})
+
+// 跨链兑换  eth -> erc20
+const eth2token = () => ({
+  inputs: [
+    {
+      components: [
+        {
+          internalType: 'uint256',
+          name: 'amount0OutMin',
+          type: 'uint256',
+        },
+        {
+          internalType: 'uint256',
+          name: 'amount1OutMin',
+          type: 'uint256',
+        },
+        {
+          internalType: 'uint256',
+          name: 'rewardsMin',
+          type: 'uint256',
+        },
+        {
+          internalType: 'uint256',
+          name: 'deadline',
+          type: 'uint256',
+        },
+      ],
+      internalType: 'struct HGSwapBaseStorage.SwapLimit',
+      name: 'limit',
+      type: 'tuple',
+    },
+    {
+      internalType: 'address',
+      name: 'router',
+      type: 'address',
+    },
+    {
+      internalType: 'address[]',
+      name: 'path',
+      type: 'address[]',
+    },
+    {
+      internalType: 'bytes',
+      name: 'encodeToInfo',
+      type: 'bytes',
+    },
+    {
+      internalType: 'string',
+      name: 'channel',
+      type: 'string',
+    },
+  ],
+  name: 'swapExactETHForTokensSupportingFeeOnTransferTokensCrossChain',
+  outputs: [],
+  stateMutability: 'payable',
+  type: 'function',
+})
+
+// 单链兑换 eth -> erc20
 const singleEth2Token = () => ({
   inputs: [
+    {
+      internalType: 'address',
+      name: 'router',
+      type: 'address',
+    },
     {
       internalType: 'uint256',
       name: 'amountOutMin',
@@ -360,47 +485,14 @@ const singleEth2Token = () => ({
   type: 'function',
 })
 
-const singleToken2Eth = () => ({
-  inputs: [
-    {
-      internalType: 'uint256',
-      name: 'amountIn',
-      type: 'uint256',
-    },
-    {
-      internalType: 'uint256',
-      name: 'amountOutMin',
-      type: 'uint256',
-    },
-    {
-      internalType: 'address[]',
-      name: 'path',
-      type: 'address[]',
-    },
-    {
-      internalType: 'address',
-      name: 'to',
-      type: 'address',
-    },
-    {
-      internalType: 'uint256',
-      name: 'deadline',
-      type: 'uint256',
-    },
-    {
-      internalType: 'string',
-      name: 'channel',
-      type: 'string',
-    },
-  ],
-  name: 'swapExactTokensForETHSupportingFeeOnTransferTokens',
-  outputs: [],
-  stateMutability: 'nonpayable',
-  type: 'function',
-})
-
+// 单链兑换 erc20 -> erc20
 const singleToken2Token = () => ({
   inputs: [
+    {
+      internalType: 'address',
+      name: 'router',
+      type: 'address',
+    },
     {
       internalType: 'uint256',
       name: 'amountIn',
@@ -438,100 +530,23 @@ const singleToken2Token = () => ({
   type: 'function',
 })
 
-const eth2token = () => ({
+// 单链兑换 erc20 -> eth
+const singleToken2Eth = () => ({
   inputs: [
     {
-      components: [
-        {
-          internalType: 'uint256',
-          name: 'amount0OutMin',
-          type: 'uint256',
-        },
-        {
-          internalType: 'uint256',
-          name: 'amount1OutMin',
-          type: 'uint256',
-        },
-        {
-          internalType: 'uint256',
-          name: 'rewardsMin',
-          type: 'uint256',
-        },
-        {
-          internalType: 'uint256',
-          name: 'deadline',
-          type: 'uint256',
-        },
-      ],
-      internalType: 'struct HGSwapHecoBridgeV2.SwapLimit',
-      name: 'limit',
-      type: 'tuple',
+      internalType: 'address',
+      name: 'router',
+      type: 'address',
     },
-    {
-      internalType: 'address[]',
-      name: 'path',
-      type: 'address[]',
-    },
-    {
-      internalType: 'string',
-      name: 'toPath',
-      type: 'string',
-    },
-    {
-      internalType: 'string',
-      name: 'to',
-      type: 'string',
-    },
-    {
-      internalType: 'string',
-      name: 'toChain',
-      type: 'string',
-    },
-    {
-      internalType: 'string',
-      name: 'channel',
-      type: 'string',
-    },
-  ],
-  name: 'swapExactETHForTokensSupportingFeeOnTransferTokensCrossChain',
-  outputs: [],
-  stateMutability: 'payable',
-  type: 'function',
-})
-
-const token2token = () => ({
-  inputs: [
     {
       internalType: 'uint256',
       name: 'amountIn',
       type: 'uint256',
     },
     {
-      components: [
-        {
-          internalType: 'uint256',
-          name: 'amount0OutMin',
-          type: 'uint256',
-        },
-        {
-          internalType: 'uint256',
-          name: 'amount1OutMin',
-          type: 'uint256',
-        },
-        {
-          internalType: 'uint256',
-          name: 'rewardsMin',
-          type: 'uint256',
-        },
-        {
-          internalType: 'uint256',
-          name: 'deadline',
-          type: 'uint256',
-        },
-      ],
-      internalType: 'struct HGSwapHecoBridgeV2.SwapLimit',
-      name: 'limit',
-      type: 'tuple',
+      internalType: 'uint256',
+      name: 'amountOutMin',
+      type: 'uint256',
     },
     {
       internalType: 'address[]',
@@ -539,19 +554,14 @@ const token2token = () => ({
       type: 'address[]',
     },
     {
-      internalType: 'string',
-      name: 'toPath',
-      type: 'string',
-    },
-    {
-      internalType: 'string',
+      internalType: 'address',
       name: 'to',
-      type: 'string',
+      type: 'address',
     },
     {
-      internalType: 'string',
-      name: 'toChain',
-      type: 'string',
+      internalType: 'uint256',
+      name: 'deadline',
+      type: 'uint256',
     },
     {
       internalType: 'string',
@@ -559,17 +569,52 @@ const token2token = () => ({
       type: 'string',
     },
   ],
-  name: 'swapExactTokensForTokensSupportingFeeOnTransferTokensCrossChain',
+  name: 'swapExactTokensForETHSupportingFeeOnTransferTokens',
   outputs: [],
   stateMutability: 'nonpayable',
   type: 'function',
 })
+
+const isDeposit = (inToken, outToken) => {
+  const { chainId: chain, symbol: symbolLower } = inToken
+  const symbol = symbolLower.toUpperCase()
+  const outChain = outToken.chainId
+  if (!chain || !outChain) return false
+  const outSymbol = outToken.symbol.toUpperCase()
+  if (chain !== outChain) return false
+  const symbols = PROVIDERS[chain].SYMBOL
+  return symbols.includes(symbol) && symbols.includes(outSymbol)
+}
 
 const encodeFunc = (provider, storeData: BrideState, account, chainId): { data?: any; value?: any; meta?: any } => {
   const { inToken, outToken, bridgeInfo, outAmount, inTolerance, outTolerance, userDeadline } = storeData
 
   if (outToken.chainId === inToken.chainId) {
     let result = null
+    // ht <-> wht
+    if (isDeposit(inToken, outToken)) {
+      result = {
+        data: '',
+        value: '0x0',
+        to: PROVIDERS[inToken.chainId].ETH.address,
+      }
+
+      if (!inToken.address) {
+        result.data = '0xd0e30db0'
+        result.value = `0x${new BigNumber(
+          new BigNumber(bridgeInfo.inToken.amount).times(10 ** inToken.decimals).toFixed(0),
+        ).toString(16)}`
+      } else {
+        // weth -> withdraw
+        result.data = `0x2e1a7d4d${ABI.encodeParameter(
+          'uint256',
+          new BigNumber(bridgeInfo.inToken.amount).times(10 ** inToken.decimals).toFixed(0),
+        ).substr(2)}`
+      }
+
+      return result
+    }
+
     // 单链交易
     const params = [
       // min
@@ -585,7 +630,7 @@ const encodeFunc = (provider, storeData: BrideState, account, chainId): { data?:
       // deadling
       Math.floor((Date.now() + 1000 * userDeadline) / 1000),
       // channel
-      'iSwap',
+      'MAKISWAP',
     ]
 
     // If native token
@@ -596,7 +641,7 @@ const encodeFunc = (provider, storeData: BrideState, account, chainId): { data?:
       // eth -> erc20
 
       result = {
-        data: ABI.encodeFunctionCall(singleEth2Token(), params),
+        data: ABI.encodeFunctionCall(singleEth2Token(), [inToken.dexInfo.routerAddress, ...params]),
         value: `0x${amount0In}`,
       }
     } else {
@@ -605,6 +650,7 @@ const encodeFunc = (provider, storeData: BrideState, account, chainId): { data?:
       // debugger;
       result = {
         data: ABI.encodeFunctionCall(outToken.address === '' ? singleToken2Eth() : singleToken2Token(), [
+          inToken.dexInfo.routerAddress,
           amount0In,
           ...params,
         ]),
@@ -635,14 +681,24 @@ const encodeFunc = (provider, storeData: BrideState, account, chainId): { data?:
         // deadline
         Math.floor((Date.now() + 1000 * userDeadline) / 1000),
       ],
+      // router
+      inToken.dexInfo.routerAddress,
       // path
       bridgeInfo.inToken.router.map((item) => item.address),
-      // toPath
-      bridgeInfo.outToken.router.map((item) => item.address).join(','),
-      // to
-      account,
-      // toChain
-      mapChainIdToNames[outToken.chainId],
+
+      ABI.encodeParameters(
+        ['string', 'string', 'string', 'string'],
+        [
+          // toPath
+          bridgeInfo.inToken.router.map((item) => item.address).join(','),
+          // to
+          account,
+          // toChain
+          mapChainIdToNames[outToken.chainId],
+          // toRouter
+          outToken.dexInfo.routerAddress,
+        ],
+      ),
       // channel
       'MAKISWAP',
     ]
@@ -669,13 +725,22 @@ const encodeFunc = (provider, storeData: BrideState, account, chainId): { data?:
         // deadline
         Math.floor((Date.now() + 1000 * userDeadline) / 1000),
       ],
+      inToken.dexInfo.routerAddress,
       bridgeInfo.inToken.router.map((item) => item.address),
       // toPath
-      bridgeInfo.outToken.router.map((item) => item.address).join(','),
-      // to
-      account,
-      // toChain
-      mapChainIdToNames[outToken.chainId],
+      ABI.encodeParameters(
+        ['string', 'string', 'string', 'string'],
+        [
+          // toPath
+          bridgeInfo.outToken.router.map((item) => item.address).join(','),
+          // to
+          account,
+          // toChain
+          mapChainIdToNames[outToken.chainId],
+          // toRouter
+          outToken.dexInfo.routerAddress,
+        ],
+      ),
       // channel
       'MAKISWAP',
     ]
@@ -713,7 +778,7 @@ export const swap = async (bridgeInfo: BrideState, account: string, chainId: num
 
 export const getTradeStatus = async (tx: string, fromChain: number, toChain: number) => {
   const res = await axios
-    .post(`${ISWAP_API_URL}/get-tx-status`, {
+    .post(`${ISWAP_API_URL}/api/get-tx-status`, {
       fromChain,
       toChain,
       tx,
@@ -731,4 +796,20 @@ export const getTradeStatus = async (tx: string, fromChain: number, toChain: num
   return Promise.resolve(
     Number(res.data.code) === 5 ? [FetchStatus.SUCCESS] : [FetchStatus.RETURN, 'Not found transaction hash'],
   )
+}
+
+export const getTradeConfig = () => {
+  return axios.get(`${ISWAP_API_URL}/mgt/contract/router/list`, { headers: { ContractVersion: 'V3' } })
+}
+
+export const getTradeInfoDex = (inToken, outToken, direct, from, single = false) => {
+  direct = direct === 'inToken' ? 'src' : 'dest'
+  return axios.post(`${ISWAP_API_URL}/api/get-trade-info-v2`, {
+    inToken,
+    outToken,
+    direct,
+    single,
+    from,
+    channel: 'MAKISWAP',
+  })
 }

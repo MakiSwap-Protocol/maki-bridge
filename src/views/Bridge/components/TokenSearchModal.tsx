@@ -41,14 +41,12 @@ const StyledModalBody = styled(ModalBody)`
 `
 
 interface CurrencySearchModalProps extends InjectedModalProps {
-  showChainTabs?: boolean
   chainId: number
   onSelectToken: (token: Token) => void
 }
 
 const TokenSearchModal: FunctionComponent<CurrencySearchModalProps> = ({
   chainId,
-  showChainTabs,
   onDismiss = () => null,
   onSelectToken,
 }) => {
@@ -73,11 +71,9 @@ const TokenSearchModal: FunctionComponent<CurrencySearchModalProps> = ({
       </ModalHeader>
       <StyledModalBody>
         <AutoColumn gap="16px">
-          {showChainTabs && (
-            <Row>
-              <ChainTabs selectedChainId={selectedChainId} onChangeChain={setSelectedChainId} />
-            </Row>
-          )}
+          <Row>
+            <ChainTabs selectedChainId={selectedChainId} onChangeChain={setSelectedChainId} />
+          </Row>
           <Row>
             <Input
               id="token-search-input"

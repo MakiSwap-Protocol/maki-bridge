@@ -68,7 +68,6 @@ const ConfirmBridgeModal: React.FunctionComponent<ConfirmBridgeModalProps> = ({ 
       if (swap.txhash) {
         if (inToken.chainId !== outToken.chainId) {
           getTradeStatus(swap.txhash, inToken.chainId, outToken.chainId).then(([err, data]) => {
-            console.log('gggg', err)
             if (err === FetchStatus.SUCCESS) {
               setShowTx(true)
               finishSwap()
@@ -87,7 +86,7 @@ const ConfirmBridgeModal: React.FunctionComponent<ConfirmBridgeModalProps> = ({ 
   const txToShow = useMemo(() => {
     return showTx ? swap.txhash : ''
   }, [showTx, swap.txhash])
-  console.log('ffffff', swap, showTx)
+
   return (
     <TransactionConfirmationModal
       isOpen={isOpen}
