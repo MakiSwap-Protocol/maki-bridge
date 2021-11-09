@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useCallback, useState } from 'react'
-import { CardBody, ArrowDownIcon, Button, IconButton, Image } from 'maki-toolkit'
+import { CardBody, ArrowDownIcon, Button, IconButton, Image, Spinner } from 'maki-toolkit'
 import ExchangePage from 'components/Layout/ExchangePage'
 import AppBody from 'components/AppBody'
 import { ArrowWrapper, BottomGrouping, SwapCallbackError, Wrapper } from 'components/Swap/styleds'
@@ -23,10 +23,27 @@ import ConfirmBridgeModal from './components/ConfirmBridgeModal'
 
 const Bridge: FunctionComponent = () => {
   const { chainId, account } = useActiveWeb3React()
-  const { onSelectInToken, onSelectOutToken, onMax, onChangeInTokenAmount, onChangeOutTokenAmount, setTradeLimit } =
-    useBridgeActionHandlers()
+  const {
+    onSelectInToken,
+    onSelectOutToken,
+    onMax,
+    onChangeInTokenAmount,
+    onChangeOutTokenAmount,
+    setTradeLimit,
+    handleGetTradeConfig,
+  } = useBridgeActionHandlers()
   const bridgeState = useBridgeState()
-  const { inToken, outToken, inAmount, outAmount, bridgeInfo, tradeLimit, infoLoading, swap: swapState } = bridgeState
+  const {
+    inToken,
+    outToken,
+    inAmount,
+    outAmount,
+    bridgeInfo,
+    tradeLimit,
+    infoLoading,
+    swap: swapState,
+    dexConfig,
+  } = bridgeState
   const [approvalState, setApprovalState] = useState({
     show: true,
     approving: false,
@@ -61,6 +78,10 @@ const Bridge: FunctionComponent = () => {
       })
     })
   }, [setTradeLimit])
+
+  useEffect(() => {
+    handleGetTradeConfig()
+  }, [handleGetTradeConfig])
 
   const handleApprove = useCallback(() => {
     setApprovalState({
@@ -181,6 +202,14 @@ const Bridge: FunctionComponent = () => {
       })
     }
   }, [inToken, inAmount, account, chainId])
+
+  if (!dexConfig) {
+    return (
+      <ExchangePage>
+        <Spinner />
+      </ExchangePage>
+    )
+  }
 
   return (
     <ExchangePage>

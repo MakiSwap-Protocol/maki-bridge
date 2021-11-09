@@ -5,11 +5,13 @@ import { BridgeInfo, SwapState, TradeLimit } from './types'
 import {
   setBridgeInfo,
   setBridgeInfoLoading,
+  setDexConfig,
   setInAmount,
   setInToken,
   setOutAmount,
   setOutToken,
   setSwapState,
+  setTokenDexConfig,
   updateTradeLimit,
 } from './actions'
 
@@ -35,6 +37,8 @@ export interface BrideState {
   tradeLimit: TradeLimit
   infoLoading: boolean
   swap: SwapState
+  dexConfig: any
+  direct: string
 }
 
 const initialState: BrideState = {
@@ -66,6 +70,8 @@ const initialState: BrideState = {
     isSwapping: false,
     txhash: null,
   },
+  dexConfig: null,
+  direct: 'inToken',
 }
 
 export default createReducer<BrideState>(initialState, (builder) =>
@@ -87,12 +93,14 @@ export default createReducer<BrideState>(initialState, (builder) =>
       return {
         ...state,
         inAmount: payload,
+        direct: 'inToken',
       }
     })
     .addCase(setOutAmount, (state, { payload }) => {
       return {
         ...state,
         outAmount: payload,
+        direct: 'outToken',
       }
     })
     .addCase(setBridgeInfo, (state, { payload }) => {
@@ -120,6 +128,32 @@ export default createReducer<BrideState>(initialState, (builder) =>
         ...state,
         swap: {
           ...payload,
+        },
+      }
+    })
+    .addCase(setDexConfig, (state, { payload }) => {
+      return {
+        ...state,
+        dexConfig: payload,
+      }
+    })
+    .addCase(setTokenDexConfig, (state, { payload: { isInToken, dexConfig } }) => {
+      const { inToken, outToken } = state
+      if (isInToken) {
+        return {
+          ...state,
+          inToken: {
+            ...inToken,
+            dexInfo: dexConfig,
+          },
+        }
+      }
+
+      return {
+        ...state,
+        outToken: {
+          ...outToken,
+          dexInfo: dexConfig,
         },
       }
     }),

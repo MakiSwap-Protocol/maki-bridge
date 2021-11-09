@@ -2,16 +2,18 @@ import React, { FunctionComponent, useEffect, useState, useMemo, useCallback } f
 import styled from 'styled-components'
 import { darken } from 'polished'
 import { RowBetween } from 'components/Row'
-import { Button, ChevronDownIcon, Text, useModal } from 'maki-toolkit'
+import { Button, ChevronDownIcon, Text, useModal, Flex } from 'maki-toolkit'
 import { Input as NumericalInput } from 'components/NumericalInput'
 import CoinLogo from 'components/Maki/CoinLogo'
 import { useActiveWeb3React } from 'hooks'
 import BigNumber from 'bignumber.js'
 import { getFullDisplayBalance } from 'utils/formatBalance'
+import { useDexConfig, useBridgeState } from 'state/bridge/hooks'
 
 import TokenSearchModal from './TokenSearchModal'
 import { FetchStatus, Token } from '../constant'
 import { getBalanceSingle, getEthBalance } from '../utils'
+import DexSelectModal from './DexSelectModal'
 
 const InputRow = styled.div`
   display: flex;
@@ -75,6 +77,25 @@ const Aligner = styled.span`
   justify-content: space-between;
 `
 
+const DexInfo = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 3px 4px;
+  border-radius: 4px;
+  margin-left: 8px;
+  background-color: ${({ theme }) => darken(0.05, theme.colors.input)};
+
+  img {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+  }
+
+  :hover {
+    cursor: pointer;
+  }
+`
+
 interface Props {
   value: string
   label: string
@@ -101,6 +122,9 @@ const TradeItem: FunctionComponent<Props> = ({
     amount: new BigNumber(0),
     fetchStatus: FetchStatus.NOT_FETCHED,
   })
+
+  const { inToken, outToken } = useBridgeState()
+  const dexConfig = useDexConfig()
 
   useEffect(() => {
     if (account) {
@@ -129,9 +153,9 @@ const TradeItem: FunctionComponent<Props> = ({
     }
   }, [account, selectedToken])
 
-  const [onPresentTokenModal] = useModal(
-    <TokenSearchModal onSelectToken={onSelectToken} showChainTabs={isOutToken} chainId={chainId} />,
-  )
+  const [onPresentTokenModal] = useModal(<TokenSearchModal onSelectToken={onSelectToken} chainId={chainId} />)
+
+  const [onPresentDexModal] = useModal(<DexSelectModal isInToken={isOutToken !== true} />)
 
   const balanceToShow = useMemo(() => {
     if (account) {
@@ -153,14 +177,76 @@ const TradeItem: FunctionComponent<Props> = ({
     }
   }, [onMax, balance, selectedToken])
 
+  const dexBaseInfo = useMemo(() => {
+    if (selectedToken) {
+      return dexConfig[selectedToken.chainId]
+    }
+
+    return null
+  }, [selectedToken, dexConfig])
+
+  const dexInfo = useMemo(() => {
+    if (selectedToken && selectedToken.dexInfo && selectedToken.dexInfo.dexName) {
+      return selectedToken.dexInfo
+    }
+
+    if (!dexBaseInfo || !dexBaseInfo.token) return null
+
+    const tokenDexInfo = dexBaseInfo.dex[dexBaseInfo.token[selectedToken.symbol]]
+
+    return tokenDexInfo || dexBaseInfo.ddex
+  }, [selectedToken, dexBaseInfo])
+
+  const isUSDT = useMemo(() => {
+    if (selectedToken) {
+      return (
+        [
+          // bsc u
+          '0x55d398326f99059fF775485246999027B3197955',
+          // heco u
+          '0xa71edc38d189767582c38a3145b5873052c3e47a',
+          // polygon u
+          '0xc2132D05D31c914a87C6611C10748AEb04B58e8F',
+          // oec u
+          '0x382bb369d343125bfb2117af9c149795c6c65c50',
+          // eth u
+          '0xdAC17F958D2ee523a2206206994597C13D831ec7',
+        ]
+          .map((item) => item.toLowerCase())
+          .indexOf(selectedToken.address.toLowerCase()) !== -1
+      )
+    }
+
+    return false
+  }, [selectedToken])
+
+  const handleRenderDexInfo = useCallback(() => {
+    const isSingle = inToken?.chainId === outToken?.chainId
+
+    if (dexInfo && !isUSDT && (isSingle ? !isOutToken : true)) {
+      return (
+        <DexInfo onClick={onPresentDexModal}>
+          <img src={dexInfo.icon} alt="" />
+          {dexInfo.dexName}
+          <ChevronDownIcon />
+        </DexInfo>
+      )
+    }
+
+    return null
+  }, [dexInfo, isUSDT, isOutToken, inToken, outToken, onPresentDexModal])
+
   return (
     <InputPanel>
       <Container>
         <LabelRow>
           <RowBetween>
-            <Text fontSize="14px">
-              {label}&nbsp;<strong>{chainName}</strong>
-            </Text>
+            <Flex alignItems="center">
+              <Text fontSize="14px">
+                {label}&nbsp;<strong>{chainName}</strong>
+              </Text>
+              {handleRenderDexInfo()}
+            </Flex>
 
             <Text onClick={handleClickMax} fontSize="14px" style={{ display: 'inline', cursor: 'pointer' }}>
               {balanceToShow}

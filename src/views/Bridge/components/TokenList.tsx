@@ -140,7 +140,12 @@ const TokenRow: FunctionComponent<TokenRowProps> = ({ isSelected, style, token, 
   }, [token, handleAddCustomToken, handleRemoveCustomToken])
 
   return (
-    <MenuItem style={style} onClick={() => onSelect(token)} disabled={isSelected} selected={false}>
+    <MenuItem
+      style={style}
+      onClick={() => (balance.fetchStatus === FetchStatus.SUCCESS ? onSelect(token) : null)}
+      disabled={isSelected}
+      selected={false}
+    >
       <CoinLogo srcs={[token.logo]} size="24px" />
       <Column>
         <Text bold>{token.symbol}</Text>
@@ -243,25 +248,28 @@ const TokenList: FunctionComponent<TokenListProps> = ({
 
   useEffect(() => {
     if (account) {
-      const getBalanceReqs = getBalance(defaultList.slice(1), account, chainId)
+      const listToUse = defaultList.map((token) => ({ ...token, chainId }))
+      const getBalanceReqs = getBalance(listToUse.slice(1), account, chainId)
       const getEthReq = getEthBalance(account, chainId)
-      setTokensWithBalance(defaultList)
+      setTokensWithBalance(listToUse)
 
       Promise.all([getBalanceReqs, getEthReq]).then(([balanceResult, ethBalanceResult]) => {
         const [balanceErr, balances] = balanceResult
         const [ethErr, eth] = ethBalanceResult
 
         if (balanceErr === FetchStatus.SUCCESS) {
-          setTokensWithBalance([
-            {
-              ...defaultList[0],
-              balance: {
-                amount: new BigNumber(eth),
-                fetchStatus: FetchStatus.SUCCESS,
+          if (balances[0].chainId === chainId) {
+            setTokensWithBalance([
+              {
+                ...defaultList[0],
+                balance: {
+                  amount: new BigNumber(eth),
+                  fetchStatus: FetchStatus.SUCCESS,
+                },
               },
-            },
-            ...balances.sort((a, b) => (b.balance.amount.isGreaterThan(a.balance.amount) ? 1 : -1)),
-          ])
+              ...balances.sort((a, b) => (b.balance.amount.isGreaterThan(a.balance.amount) ? 1 : -1)),
+            ])
+          }
         }
       })
     }

@@ -53,7 +53,7 @@ const BridgeModalHeader: React.FunctionComponent = () => {
         <RowFixed gap="0px">
           <CoinLogo srcs={[outToken.logo]} size="24px" style={{ marginRight: '12px' }} />
           <Text fontSize="24px" style={{ marginLeft: '10px', fontWeight: 500 }} color="primary">
-            {Number(bridgeInfo.outToken.amount).toFixed(3)}
+            {Number(bridgeInfo.outToken.amountOut).toFixed(3)}
           </Text>
         </RowFixed>
         <RowFixed gap="0px">

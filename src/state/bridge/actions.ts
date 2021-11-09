@@ -16,3 +16,7 @@ export const updateTradeLimit =
   createAction<{ chainId: number; data: { max: number; min: number } }>('bridge/updateTradeLimit')
 
 export const setSwapState = createAction<{ isSwapping: boolean; txhash: string }>('bridge/setSwapState')
+
+export const setDexConfig = createAction<any>('bridge/setDexConfig')
+
+export const setTokenDexConfig = createAction<{ isInToken: boolean; dexConfig: any }>('bridge/setTokenDexConfig')

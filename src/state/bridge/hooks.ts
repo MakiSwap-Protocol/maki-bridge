@@ -3,7 +3,7 @@ import axios from 'axios'
 import { AppState, AppDispatch } from 'state'
 import { useSelector, useDispatch } from 'react-redux'
 import { Token, ISWAP_API_URL, mapChainIdToNames, PROVIDERS, FetchStatus } from 'views/Bridge/constant'
-import { swap } from 'views/Bridge/utils'
+import { swap, getTradeConfig } from 'views/Bridge/utils'
 import { useActiveWeb3React } from 'hooks'
 
 import {
@@ -15,6 +15,8 @@ import {
   updateTradeLimit,
   setBridgeInfoLoading,
   setSwapState,
+  setDexConfig,
+  setTokenDexConfig,
 } from './actions'
 
 export const useBridgeState = (): AppState['bridge'] => {
@@ -42,6 +44,12 @@ export const useOutToken = (): Token => {
   return outToken
 }
 
+export const useDexConfig = () => {
+  const { dexConfig } = useBridgeState()
+
+  return dexConfig
+}
+
 const isSameToken = (tokenA: Token, tokenB: Token): boolean => {
   if (tokenA && tokenB) {
     return tokenA.address === tokenB.address && tokenA.chainId === tokenB.chainId
@@ -49,6 +57,8 @@ const isSameToken = (tokenA: Token, tokenB: Token): boolean => {
 
   return false
 }
+
+let requests = []
 
 export const useBridgeActionHandlers = (): {
   onSelectInToken: (token: Token) => void
@@ -60,16 +70,42 @@ export const useBridgeActionHandlers = (): {
   setTradeLimit: (chainId: number, data: { max: number; min: number }) => void
   onSwap: (chainId: number) => void
   finishSwap: () => void
+  handleGetTradeConfig: () => void
+  updateTokenDexConfig: (isInToken: boolean, config: any) => void
 } => {
   const dispatch = useDispatch<AppDispatch>()
   const bridgeState = useBridgeState()
-  const { inToken, outToken, inAmount, outAmount, swap: swapState } = bridgeState
+  const { inToken, outToken, inAmount, outAmount, swap: swapState, dexConfig } = bridgeState
   const { account } = useActiveWeb3React()
+
+  const getDexInfo = useCallback(
+    (token: Token) => {
+      const base = dexConfig[token.chainId]
+      if (!base) {
+        return null
+      }
+
+      const tokenDex = base.token[token.symbol]
+      if (!tokenDex) {
+        return base.ddex
+      }
+
+      return base.dex[tokenDex]
+    },
+    [dexConfig],
+  )
 
   const handleGetTradeInfo = useCallback(
     (params: any, tokenIn: Token, tokenOut: Token) => {
       dispatch(setBridgeInfoLoading(true))
-      axios.post(`${ISWAP_API_URL}/get-trade-info`, params).then((result) => {
+      requests.forEach((c) => c('cancel old'))
+      requests = []
+      const options = {
+        cancelToken: new axios.CancelToken((cancel) => {
+          requests.push(cancel)
+        }),
+      }
+      axios.post(`${ISWAP_API_URL}/api/get-trade-info-v2`, params, options).then((result) => {
         if (result.data.code === 0) {
           if (tokenIn.chainId === tokenOut.chainId) {
             dispatch(
@@ -103,6 +139,9 @@ export const useBridgeActionHandlers = (): {
       if (isSameToken(token, outToken)) {
         return
       }
+
+      token.dexInfo = getDexInfo(token)
+
       dispatch(setInToken(token))
       if (outToken) {
         const isDest = inAmount.length === 0
@@ -113,6 +152,7 @@ export const useBridgeActionHandlers = (): {
             decimals: token.decimals,
             symbol: token.symbol,
             amount: inAmount,
+            dexInfo: token.dexInfo,
           },
           outToken: {
             chain: outToken.chainId,
@@ -120,14 +160,18 @@ export const useBridgeActionHandlers = (): {
             decimals: outToken.decimals,
             symbol: outToken.symbol,
             amountOut: isDest ? outAmount : '',
+            dexInfo: outToken.dexInfo,
           },
           direct: isDest ? 'dest' : 'src',
+          from: account,
+          single: false,
+          channel: 'MAKISWAP',
         }
 
         handleGetTradeInfo(params, token, outToken)
       }
     },
-    [dispatch, outToken, inAmount, outAmount, handleGetTradeInfo],
+    [dispatch, outToken, inAmount, outAmount, handleGetTradeInfo, account, getDexInfo],
   )
 
   const onSelectOutToken = useCallback(
@@ -135,6 +179,8 @@ export const useBridgeActionHandlers = (): {
       if (isSameToken(token, inToken)) {
         return
       }
+
+      token.dexInfo = getDexInfo(token)
       dispatch(setOutToken(token))
 
       if (inToken) {
@@ -145,6 +191,7 @@ export const useBridgeActionHandlers = (): {
             address: inToken.address,
             decimals: inToken.decimals,
             symbol: inToken.symbol,
+            dexInfo: inToken.dexInfo,
             amount: isSrc ? inAmount : '',
           },
           outToken: {
@@ -152,15 +199,19 @@ export const useBridgeActionHandlers = (): {
             address: token.address,
             decimals: token.decimals,
             symbol: token.symbol,
+            dexInfo: token.dexInfo,
             amountOut: outAmount,
           },
           direct: isSrc ? 'src' : 'dest',
+          from: account,
+          single: false,
+          channel: 'MAKISWAP',
         }
 
         handleGetTradeInfo(params, inToken, token)
       }
     },
-    [dispatch, inToken, outAmount, inAmount, handleGetTradeInfo],
+    [dispatch, inToken, outAmount, inAmount, handleGetTradeInfo, getDexInfo, account],
   )
 
   const onChangeInTokenAmount = useCallback(
@@ -174,6 +225,7 @@ export const useBridgeActionHandlers = (): {
             address: inToken.address,
             decimals: inToken.decimals,
             symbol: inToken.symbol,
+            dexInfo: inToken.dexInfo,
             amount,
           },
           outToken: {
@@ -181,15 +233,19 @@ export const useBridgeActionHandlers = (): {
             address: outToken.address,
             decimals: outToken.decimals,
             symbol: outToken.symbol,
+            dexInfo: outToken.dexInfo,
             amount: '',
           },
           direct: 'src',
+          from: account,
+          single: false,
+          channel: 'MAKISWAP',
         }
 
         handleGetTradeInfo(params, inToken, outToken)
       }
     },
-    [dispatch, inToken, outToken, handleGetTradeInfo],
+    [dispatch, inToken, outToken, handleGetTradeInfo, account],
   )
 
   const onChangeOutTokenAmount = useCallback(
@@ -203,21 +259,26 @@ export const useBridgeActionHandlers = (): {
             address: inToken.address,
             decimals: inToken.decimals,
             symbol: inToken.symbol,
+            dexInfo: inToken.dexInfo,
           },
           outToken: {
             chain: outToken.chainId,
             address: outToken.address,
             decimals: outToken.decimals,
             symbol: outToken.symbol,
+            dexInfo: outToken.dexInfo,
             amountOut: amount,
           },
           direct: 'dest',
+          from: account,
+          single: false,
+          channel: 'MAKISWAP',
         }
 
         handleGetTradeInfo(params, inToken, outToken)
       }
     },
-    [dispatch, inToken, outToken, handleGetTradeInfo],
+    [dispatch, inToken, outToken, handleGetTradeInfo, account],
   )
 
   const onMax = useCallback(
@@ -231,6 +292,7 @@ export const useBridgeActionHandlers = (): {
             address: inToken.address,
             decimals: inToken.decimals,
             symbol: inToken.symbol,
+            dexInfo: inToken.dexInfo,
             amount: maxAmount,
           },
           outToken: {
@@ -238,15 +300,19 @@ export const useBridgeActionHandlers = (): {
             address: outToken.address,
             decimals: outToken.decimals,
             symbol: outToken.symbol,
+            dexInfo: outToken.dexInfo,
             amount: '',
           },
           direct: 'src',
+          from: account,
+          single: false,
+          channel: 'MAKISWAP',
         }
 
         handleGetTradeInfo(params, inToken, outToken)
       }
     },
-    [dispatch, inToken, outToken, handleGetTradeInfo],
+    [dispatch, inToken, outToken, handleGetTradeInfo, account],
   )
 
   const setTradeLimit = useCallback(
@@ -278,6 +344,77 @@ export const useBridgeActionHandlers = (): {
 
   const finishSwap = () => dispatch(setSwapState({ ...swapState, isSwapping: false }))
 
+  const handleGetTradeConfig = useCallback(() => {
+    getTradeConfig().then((result) => {
+      if (result.data.code === 0) {
+        const { list } = result.data
+        const payload = {}
+        list.forEach((obj) => {
+          const key = Object.keys(obj)[0]
+          const { dex, token } = obj[key]
+          const dexInfo = {}
+          const tokenDexMap = {}
+          let ddex = null
+
+          dex.forEach((d) => {
+            dexInfo[d.dexName] = d
+            if (d.isDefault) {
+              ddex = d
+            }
+          })
+
+          Object.keys(token).map((dexName) =>
+            token[dexName].map((symbol) => {
+              tokenDexMap[symbol] = dexName
+
+              return tokenDexMap[symbol]
+            }),
+          )
+
+          payload[key] = {
+            dex: dexInfo,
+            token: tokenDexMap,
+            ddex,
+          }
+        })
+
+        dispatch(setDexConfig(payload))
+      }
+    })
+  }, [dispatch])
+
+  const updateTokenDexConfig = useCallback(
+    (isInToken, config) => {
+      dispatch(setTokenDexConfig({ isInToken, dexConfig: config }))
+
+      const params = {
+        inToken: {
+          chain: inToken.chainId,
+          address: inToken.address,
+          decimals: inToken.decimals,
+          symbol: inToken.symbol,
+          dexInfo: isInToken ? config : inToken.dexInfo,
+          amount: inAmount,
+        },
+        outToken: {
+          chain: outToken.chainId,
+          address: outToken.address,
+          decimals: outToken.decimals,
+          symbol: outToken.symbol,
+          dexInfo: isInToken ? outToken.dexInfo : config,
+          amountOut: outAmount,
+        },
+        direct: isInToken ? 'src' : 'dest',
+        from: account,
+        single: false,
+        channel: 'MAKISWAP',
+      }
+
+      handleGetTradeInfo(params, inToken, outToken)
+    },
+    [dispatch, handleGetTradeInfo, account, inToken, outToken, inAmount, outAmount],
+  )
+
   return {
     onSelectInToken,
     onSelectOutToken,
@@ -288,5 +425,7 @@ export const useBridgeActionHandlers = (): {
     setTradeLimit,
     onSwap,
     finishSwap,
+    handleGetTradeConfig,
+    updateTokenDexConfig,
   }
 }

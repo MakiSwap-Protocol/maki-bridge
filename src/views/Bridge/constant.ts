@@ -218,52 +218,57 @@ export const PROVIDERS = {
   128: {
     RPC: `https://http-mainnet-node.defibox.com`,
     ROUTER: '0xED7d5F38C79115ca12fe6C0041abb22F0A06C300',
-    BRIDGE: '0x888347BEE6dD913b94B209D760f0494C536F9eAD',
+    BRIDGE: '0x6b691d28159EF99721db6477eBa47058cD8e9dE9',
     FEE: '0xc18f42C539fBE760e0B7c87423D3F7a58A0Bfa10',
     FACTORY: '0xb0b670fc1f7724119963018db0bfa86adb22d941',
     MULTICALL: '0x18ca06c5f457306ef94768bc4fd2712c80c9571f',
     ETH: new UniToken(128, HECO_TOKENS.WHT.address, HECO_TOKENS.WHT.decimals, HECO_TOKENS.WHT.symbol),
     USDT: new UniToken(128, HECO_TOKENS.USDT.address, HECO_TOKENS.USDT.decimals, HECO_TOKENS.USDT.symbol),
+    SYMBOL: ['HT', 'WHT'],
   },
   56: {
     RPC: `https://bsc-dataseed1.binance.org/`,
     ROUTER: '0x10ED43C718714eb63d5aA57B78B54704E256024E',
-    BRIDGE: '0xD1a6621F5dfb3D18807aE8a428A1D6519DAB6FCD',
+    BRIDGE: '0xa90a8e34cea28bF9a234d4eac240fB32358b51AB',
     FEE: '0xB2e5d89600Bc218cB920f22dc3c0685D2e17917D',
     FACTORY: '0xca143ce32fe78f1f7019d7d551a6402fc5350c73',
     MULTICALL: '0xfF6FD90A470Aaa0c1B8A54681746b07AcdFedc9B',
     ETH: new UniToken(56, BSC_TOKENS.WBNB.address, BSC_TOKENS.WBNB.decimals, BSC_TOKENS.WBNB.symbol),
     USDT: new UniToken(56, BSC_TOKENS.USDT.address, BSC_TOKENS.USDT.decimals, BSC_TOKENS.USDT.symbol),
+    SYMBOL: ['BNB', 'WBNB'],
   },
   137: {
     RPC: `https://rpc-mainnet.maticvigil.com`,
     ROUTER: '0xa5e0829caced8ffdd4de3c43696c57f7d7a678ff',
-    BRIDGE: '0xDa08C6496924409f757Ff79aE8b6e34544903B52',
+    BRIDGE: '0x82a079DE7D2a8b59Bc932Df079eF5aA31B01AEB6',
     FEE: '0x3f7934d9C827BcBfcB818Eed85Ed654CD448127c',
     FACTORY: '0x5757371414417b8c6caad45baef941abc7d3ab32',
     MULTICALL: '0x35e4aa226ce52e1e59e5e5ec24766007bcbe2e7d',
     ETH: new UniToken(137, POLYGON_TOKENS.WMATIC.address, POLYGON_TOKENS.WMATIC.decimals, POLYGON_TOKENS.WMATIC.symbol),
     USDT: new UniToken(137, POLYGON_TOKENS.USDT.address, POLYGON_TOKENS.USDT.decimals, POLYGON_TOKENS.USDT.symbol),
+    SYMBOL: ['MATIC', 'WMATIC'],
   },
   66: {
     RPC: `https://exchainrpc.okex.org`,
     ROUTER: '0xc3364A27f56b95f4bEB0742a7325D67a04D80942',
-    BRIDGE: '0x3Eb2D1299e78e63D2b0AD2dEE5A7fD1D9D92f4f2',
+    BRIDGE: '0x82a079DE7D2a8b59Bc932Df079eF5aA31B01AEB6',
     FEE: '0xABCb22D01985dD9D225Ada87360Fc95B21667ad1',
     FACTORY: '0x60dcd4a2406be12dbe3bb2aada12cfb762a418c1',
     MULTICALL: '0x8d2b2f0bf61371c4181e44deb9590427c0afa6e1',
     ETH: new UniToken(66, OEC_TOKENS.WOKT.address, OEC_TOKENS.WOKT.decimals, OEC_TOKENS.WOKT.symbol),
     USDT: new UniToken(66, OEC_TOKENS.USDT.address, OEC_TOKENS.USDT.decimals, OEC_TOKENS.USDT.symbol),
+    SYMBOL: ['OKT', 'WOKT'],
   },
   1: {
     RPC: `https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161`,
     ROUTER: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
-    BRIDGE: '0x58C7B248d690650146170d6B3632fc86616CE2bB',
+    BRIDGE: '0x3307c46a1e9633025D2e89658c7502A683585450',
     FEE: '0x1e8e65de9c590f5ec41b7d0e8d21a68a52887cef',
     FACTORY: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
     MULTICALL: '0x5e227ad1969ea493b43f840cff78d08a6fc17796',
     ETH: new UniToken(1, ETH_TOKENS.WETH.address, ETH_TOKENS.WETH.decimals, ETH_TOKENS.WETH.symbol),
     USDT: new UniToken(1, ETH_TOKENS.USDT.address, ETH_TOKENS.USDT.decimals, ETH_TOKENS.USDT.symbol),
+    SYMBOL: ['ETH', 'WETH'],
   },
 }
 
@@ -295,6 +300,12 @@ export interface Token {
   isCustom?: boolean
   isAdded?: boolean
   chainId?: number
+  dexInfo?: DexInfo
 }
 
-export const ISWAP_API_URL = 'https://v2.iswap.com/api'
+export interface DexInfo {
+  dexName: string
+  routerAddress: string
+}
+
+export const ISWAP_API_URL = 'https://v2-1.iswap.com'
